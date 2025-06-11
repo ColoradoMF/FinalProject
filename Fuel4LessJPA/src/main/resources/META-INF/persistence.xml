@@ -12,10 +12,10 @@
 
 		<properties>
 			<property name="jakarta.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/FIXME" />
-			<property name="jakarta.persistence.jdbc.user" value="FIXME" />
+				value="jdbc:mysql://localhost:3306/fueldb" />
+			<property name="jakarta.persistence.jdbc.user" value="fueluser" />
 			<property name="jakarta.persistence.jdbc.password"
-				value="todos" />
+				value="fueluser" />
 			<property name="jakarta.persistence.jdbc.driver"
 				value="com.mysql.cj.jdbc.Driver" />
 
