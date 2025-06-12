@@ -47,9 +47,16 @@ class PriceReportTest {
 	 }
 	 
 	@Test
-	void test_GasStationReview_Entity_mapping() {
+	void test_PriceReport_Entity_mapping() {
 		assertNotNull(priceReport);
 		assertEquals("these prices stink", priceReport.getRemarks());
+	}
+	
+	@Test
+	void test_PriceReport_User_mto_mapping() {
+		User user = priceReport.getUser();
+		assertNotNull(user);
+		assertEquals("miles".toLowerCase(), user.getFirstName().toLowerCase());
 	}
 
 }

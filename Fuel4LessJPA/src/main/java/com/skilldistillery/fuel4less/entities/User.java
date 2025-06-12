@@ -54,6 +54,12 @@ public class User {
 	inverseJoinColumns=@JoinColumn(name = "gas_station_id"))
 	private List<GasStation> favoriteGasStations;
 	
+	@Column(name= "price_report")
+	@OneToMany(mappedBy = "user")
+	private List<PriceReport> priceReports;
+	@OneToMany(mappedBy = "user")
+	private List<GasStationReview> gasStationReviews;
+	
 	
 	// Constructors
 	public User() {
@@ -182,6 +188,22 @@ public class User {
 
 	public void setFavoriteGasStations(List<GasStation> favoriteGasStations) {
 		this.favoriteGasStations = favoriteGasStations;
+	}
+
+	public List<PriceReport> getPriceReports() {
+		return priceReports;
+	}
+
+	public void setPriceReports(List<PriceReport> priceReports) {
+		this.priceReports = priceReports;
+	}
+
+	public List<GasStationReview> getGasStationReviews() {
+		return gasStationReviews;
+	}
+
+	public void setGasStationReviews(List<GasStationReview> gasStationReview) {
+		this.gasStationReviews = gasStationReview;
 	}
 
 	//hashCode and equals

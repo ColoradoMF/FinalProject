@@ -38,7 +38,7 @@ class UserTest {
 	 @BeforeEach
 	 void setUp() throws Exception {
 		 em = emf.createEntityManager();
-		 user = em.find(User.class, 1);
+		 user = em.find(User.class, 3);
 	 }
 
 
@@ -50,6 +50,7 @@ class UserTest {
 	 
 	@Test
 	void test_User_Entity_mapping() {
+		user = em.find(User.class, 1);
 		assertNotNull(user);
 		assertEquals("test", user.getUsername());
 		assertEquals("admin", user.getRole());
@@ -58,11 +59,24 @@ class UserTest {
 	
 	@Test
 	void test_User_GasStation_ManyToMany_mapping() {
-		User user = em.find(User.class, 3);
 		List<GasStation> favoriteGasStations = user.getFavoriteGasStations();
 		assertNotNull(user);
 		assertNotNull(favoriteGasStations);
 		assertTrue(favoriteGasStations.size() > 0);
+	}
+	
+	@Test
+	void test_User_PriceReport_otm_mapping() {
+		List<PriceReport> priceReports = user.getPriceReports();
+		assertNotNull(priceReports);
+		assertTrue(priceReports.size() > 0);
+	}
+	
+	@Test
+	void test_User_GasStationReview_otm_mapping() {
+		List<GasStationReview> gasStationReviews = user.getGasStationReviews();
+		assertNotNull(gasStationReviews);
+		assertTrue(gasStationReviews.size() > 0);
 	}
 
 }

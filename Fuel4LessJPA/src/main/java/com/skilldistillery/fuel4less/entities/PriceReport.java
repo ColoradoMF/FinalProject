@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -31,6 +33,10 @@ public class PriceReport {
 	private LocalDateTime lastUpdate;
 	
 	private String remarks;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 
 	public PriceReport() {
 		super();
@@ -82,6 +88,14 @@ public class PriceReport {
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
