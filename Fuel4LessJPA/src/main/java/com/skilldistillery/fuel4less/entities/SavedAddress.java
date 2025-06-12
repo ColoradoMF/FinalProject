@@ -3,11 +3,18 @@ package com.skilldistillery.fuel4less.entities;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.Table;
 
-//@Entity
-public class SavedAddress {
-	
+@Entity
+@Table(name="saved_address")
+public class SavedAddress{
+	@EmbeddedId
+	private SavedAddressId id;
 	private boolean enabled;
 	private String name;
 	
@@ -16,9 +23,28 @@ public class SavedAddress {
 	
 	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	@MapsId(value="userId")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="address_id")
+	@MapsId(value="addressId")
+	private Address address;
 
 	public SavedAddress() {
 		super();
+	}
+
+	public SavedAddress(SavedAddressId id, boolean enabled, String name, LocalDateTime createDate,
+			LocalDateTime lastUpdate) {
+		super();
+		this.id = id;
+		this.enabled = enabled;
+		this.name = name;
+		this.createDate = createDate;
+		this.lastUpdate = lastUpdate;
 	}
 
 	public boolean isEnabled() {
@@ -52,13 +78,43 @@ public class SavedAddress {
 	public void setLastUpdate(LocalDateTime lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
+	
+
+	public SavedAddressId getId() {
+		return id;
+	}
+
+
+	public void setId(SavedAddressId id) {
+		this.id = id;
+	}
+
+
+
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("SavedAddress [enabled=").append(enabled).append(", name=").append(name).append(", createDate=")
-				.append(createDate).append(", lastUpdate=").append(lastUpdate).append("]");
-		return builder.toString();
+		return "SavedAddress [id=" + id + ", enabled=" + enabled + ", name=" + name + ", createDate=" + createDate
+				+ ", lastUpdate=" + lastUpdate + ", user=" + user + ", address=" + address + "]";
 	}
+
+	
+	
 	
 }

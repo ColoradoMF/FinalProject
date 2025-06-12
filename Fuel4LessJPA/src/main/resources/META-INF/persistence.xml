@@ -7,7 +7,17 @@
 
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
+		 <class>com.skilldistillery.fuel4less.entities.Address</class>
+		 <class>com.skilldistillery.fuel4less.entities.GasStation</class>
+		 <class>com.skilldistillery.fuel4less.entities.GasStationReview</class>
+		 <class>com.skilldistillery.fuel4less.entities.PriceReport</class>
+		 <class>com.skilldistillery.fuel4less.entities.ReportVote</class>
+		 <class>com.skilldistillery.fuel4less.entities.ReportVoteId</class>
+		 <class>com.skilldistillery.fuel4less.entities.SavedAddress</class>
+		 <class>com.skilldistillery.fuel4less.entities.SavedAddressId</class>
+		 <class>com.skilldistillery.fuel4less.entities.Tag</class>
 		 <class>com.skilldistillery.fuel4less.entities.User</class>
+		 
 
 
 		<properties>
