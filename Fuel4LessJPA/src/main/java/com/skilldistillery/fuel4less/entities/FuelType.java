@@ -1,5 +1,6 @@
 package com.skilldistillery.fuel4less.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -7,8 +8,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="fuel_type")
 public class FuelType {
 	
 	@Id
@@ -17,6 +21,9 @@ public class FuelType {
 	private String name;
 	@Column(name="image_url")
 	private String imageUrl;
+	
+	@OneToMany(mappedBy="fuelType")
+	private List<PriceReport> priceReports;
 	
 	
 	public FuelType() {
@@ -70,6 +77,16 @@ public class FuelType {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+
+	public List<PriceReport> getPriceReports() {
+		return priceReports;
+	}
+
+
+	public void setPriceReports(List<PriceReport> priceReports) {
+		this.priceReports = priceReports;
 	}
 
 

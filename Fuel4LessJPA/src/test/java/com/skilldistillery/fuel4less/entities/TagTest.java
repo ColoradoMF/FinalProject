@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -51,6 +53,14 @@ class TagTest {
 	void test_Tag_Entity_mapping() {
 		assertNotNull(tag);
 		assertEquals("EV Charger", tag.getName());
+	}
+
+	@Test
+	void test_Tag_GasStation_ManyToMany_mapping() {
+		Tag tag = em.find(Tag.class, 1);
+		List<GasStation> gasStations = tag.getGasStations();
+		assertNotNull(gasStations);
+		assertTrue(gasStations.size() > 0);
 	}
 
 }

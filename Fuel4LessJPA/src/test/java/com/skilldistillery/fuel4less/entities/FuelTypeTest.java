@@ -16,11 +16,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-class PriceReportTest {
+class FuelTypeTest {
 	
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
-	private PriceReport priceReport;
+	private FuelType fuelType;
 	
 	
 	@BeforeAll
@@ -38,48 +38,27 @@ class PriceReportTest {
 	 @BeforeEach
 	 void setUp() throws Exception {
 		 em = emf.createEntityManager();
-		 priceReport = em.find(PriceReport.class, 1);
+		 fuelType = em.find(FuelType.class, 1);
 	 }
 
 
 	 @AfterEach
 	 void tearDown() throws Exception {
 		 em.close();
-		 priceReport = null;
+		 fuelType = null;
 	 }
 	 
 	@Test
-	void test_PriceReport_Entity_mapping() {
-		assertNotNull(priceReport);
-		assertEquals("these prices stink", priceReport.getRemarks());
-	}
-	
-	@Test
-	void test_PriceReport_User_mto_mapping() {
-		User user = priceReport.getUser();
-		assertNotNull(user);
-		assertEquals("miles".toLowerCase(), user.getFirstName().toLowerCase());
-	}
-	
-	@Test
-	void test_PriceReport_GasStation_mto_mapping() {
-		GasStation gasStation = priceReport.getGasStation();
-		assertNotNull(gasStation);
-		assertEquals("stinker".toLowerCase(), gasStation.getName().toLowerCase());
-	}
-	
-	@Test
-	void test_PriceReport_FuelType_mto_mapping() {
-		FuelType fuelType = priceReport.getFuelType();
+	void test_FuelType_Entity_mapping() {
 		assertNotNull(fuelType);
-		assertEquals("unleaded".toLowerCase(), fuelType.getName().toLowerCase());
+		assertEquals("Unleaded", fuelType.getName());
 	}
 	
 	@Test
-	void test_PriceReport_ReportVote_otm_mapping() {
-		List<ReportVote> reportVotes = priceReport.getReportvotes();
-		assertNotNull(reportVotes);
-		assertTrue(reportVotes.size() > 0);
+	void test_FuelType_PriceReport_otm_mapping() {
+		List<PriceReport> priceReports = fuelType.getPriceReports();
+		assertNotNull(priceReports);
+		assertTrue(priceReports.size() > 0);
 	}
 
 }

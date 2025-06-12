@@ -1,12 +1,18 @@
 package com.skilldistillery.fuel4less.entities;
 
+import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Tag {
@@ -21,6 +27,13 @@ public class Tag {
 	
 	@Column(name="image_url")
 	private String imgageUrl;
+	
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "gas_station_has_tag",
+	joinColumns=@JoinColumn(name = "tag_id"),
+	inverseJoinColumns=@JoinColumn(name = "gas_station_id"))
+	private List<GasStation> gasStations;
 
 	public Tag() {
 		super();
@@ -56,6 +69,14 @@ public class Tag {
 
 	public void setImgageUrl(String imgageUrl) {
 		this.imgageUrl = imgageUrl;
+	}
+
+	public List<GasStation> getGasStations() {
+		return gasStations;
+	}
+
+	public void setGasStations(List<GasStation> gasStations) {
+		this.gasStations = gasStations;
 	}
 
 	@Override

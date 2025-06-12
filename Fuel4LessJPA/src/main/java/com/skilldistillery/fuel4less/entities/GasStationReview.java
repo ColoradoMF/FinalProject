@@ -32,6 +32,10 @@ public class GasStationReview {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+	@ManyToOne
+	@JoinColumn(name = "gas_station_id")
+	private GasStation gasStation;
+	
 
 	public GasStationReview() {
 		super();
@@ -85,6 +89,14 @@ public class GasStationReview {
 		this.user = user;
 	}
 
+
+	public GasStation getGasStation() {
+		return gasStation;
+	}
+
+	public void setGasStation(GasStation gasStation) {
+		this.gasStation = gasStation;
+	}
 
 	@Override
 	public int hashCode() {

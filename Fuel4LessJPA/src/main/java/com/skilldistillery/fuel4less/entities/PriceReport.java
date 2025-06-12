@@ -2,6 +2,7 @@ package com.skilldistillery.fuel4less.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -11,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -37,6 +39,17 @@ public class PriceReport {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="gas_station_id")
+	private GasStation gasStation;
+	
+	@ManyToOne
+	@JoinColumn(name="fuel_type_id")
+	private FuelType fuelType;
+	
+	@OneToMany(mappedBy = "priceReport")
+	List<ReportVote> reportvotes;
 
 	public PriceReport() {
 		super();
@@ -96,6 +109,30 @@ public class PriceReport {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public GasStation getGasStation() {
+		return gasStation;
+	}
+
+	public void setGasStation(GasStation gasStation) {
+		this.gasStation = gasStation;
+	}
+
+	public FuelType getFuelType() {
+		return fuelType;
+	}
+
+	public void setFuelType(FuelType fuelType) {
+		this.fuelType = fuelType;
+	}
+
+	public List<ReportVote> getReportvotes() {
+		return reportvotes;
+	}
+
+	public void setReportvotes(List<ReportVote> reportvotes) {
+		this.reportvotes = reportvotes;
 	}
 
 	@Override

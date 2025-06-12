@@ -56,11 +56,42 @@ class GasStationTest {
 	
 	@Test
 	void test_GasStation_User_ManyToMany_mapping() {
-		GasStation gasStation = em.find(GasStation.class, 1);
 		List<User> users = gasStation.getUsers();
 		assertNotNull(gasStation);
 		assertNotNull(users);
 		assertTrue(users.size() > 0);
+	}
+	
+	@Test
+	void test_GasStation_Tag_ManyToMany_mapping() {
+		List<Tag> tags = gasStation.getTags();
+		assertNotNull(gasStation);
+		assertNotNull(tags);
+		assertTrue(tags.size() > 0);
+	}
+	
+	@Test
+	void test_GasStation_PriceReport_OneToMany_mapping() {
+		List<PriceReport> priceReports = gasStation.getPriceReports();
+		assertNotNull(gasStation);
+		assertNotNull(priceReports);
+		assertTrue(priceReports.size() > 0);
+	}
+	
+	@Test
+	void test_GasStation_GasStationReview_OneToMany_mapping() {
+		List<GasStationReview> gasStationReview = gasStation.getGasStationReview();
+		assertNotNull(gasStation);
+		assertNotNull(gasStationReview);
+		assertTrue(gasStationReview.size() > 0);
+	}
+	
+	@Test
+	void test_GasStation_Address_oto_mapping() {
+		Address address = gasStation.getAddress();
+		assertNotNull(address);
+		assertEquals("800 W Hampden Ave", address.getStreet());
+		
 	}
 
 }
