@@ -14,11 +14,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-class UserTest {
+class PriceReportTest {
 	
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
-	private User user;
+	private PriceReport priceReport;
 	
 	
 	@BeforeAll
@@ -36,22 +36,20 @@ class UserTest {
 	 @BeforeEach
 	 void setUp() throws Exception {
 		 em = emf.createEntityManager();
-		 user = em.find(User.class, 1);
+		 priceReport = em.find(PriceReport.class, 1);
 	 }
 
 
 	 @AfterEach
 	 void tearDown() throws Exception {
 		 em.close();
-		 user = null;
+		 priceReport = null;
 	 }
 	 
 	@Test
-	void test_User_Entity_mapping() {
-		assertNotNull(user);
-		assertEquals("test", user.getUsername());
-		assertEquals("admin", user.getRole());
-		assertTrue(user.isEnabled());
+	void test_GasStationReview_Entity_mapping() {
+		assertNotNull(priceReport);
+		assertEquals("these prices stink", priceReport.getRemarks());
 	}
 
 }
