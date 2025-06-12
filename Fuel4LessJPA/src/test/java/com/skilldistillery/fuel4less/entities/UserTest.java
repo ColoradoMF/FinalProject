@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -52,6 +54,15 @@ class UserTest {
 		assertEquals("test", user.getUsername());
 		assertEquals("admin", user.getRole());
 		assertTrue(user.isEnabled());
+	}
+	
+	@Test
+	void test_User_GasStation_ManyToMany_mapping() {
+		User user = em.find(User.class, 3);
+		List<GasStation> favoriteGasStations = user.getFavoriteGasStations();
+		assertNotNull(user);
+		assertNotNull(favoriteGasStations);
+		assertTrue(favoriteGasStations.size() > 0);
 	}
 
 }

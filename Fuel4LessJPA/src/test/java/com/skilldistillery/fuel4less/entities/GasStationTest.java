@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -18,8 +20,7 @@ class GasStationTest {
 	
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
-	private Address address;
-	private User user;
+	private GasStation gasStation;
 	
 	
 	@BeforeAll
@@ -37,20 +38,29 @@ class GasStationTest {
 	 @BeforeEach
 	 void setUp() throws Exception {
 		 em = emf.createEntityManager();
-		 address = em.find(Address.class, 1);
+		 gasStation = em.find(GasStation.class, 1);
 	 }
 
 
 	 @AfterEach
 	 void tearDown() throws Exception {
 		 em.close();
-		 address = null;
+		 gasStation = null;
 	 }
 	 
 	@Test
-	void test_Address_Entity_mapping() {
-		assertNotNull(address);
-		assertEquals("800 W Hampden Ave", address.getStreet());
+	void test_GasStation_Entity_mapping() {
+		assertNotNull(gasStation);
+		assertEquals("Stinker".toLowerCase(), gasStation.getName().toLowerCase());
+	}
+	
+	@Test
+	void test_GasStation_User_ManyToMany_mapping() {
+		GasStation gasStation = em.find(GasStation.class, 1);
+		List<User> users = gasStation.getUsers();
+		assertNotNull(gasStation);
+		assertNotNull(users);
+		assertTrue(users.size() > 0);
 	}
 
 }

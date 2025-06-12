@@ -4,11 +4,16 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -41,6 +46,13 @@ public class User {
 	
 	@OneToMany(mappedBy="user")
 	private List<SavedAddress> savedAddresses;
+	
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "user_has_favorite_gas_stations",
+	joinColumns=@JoinColumn(name = "user_id"),
+	inverseJoinColumns=@JoinColumn(name = "gas_station_id"))
+	private List<GasStation> favoriteGasStations;
 	
 	
 	// Constructors
@@ -162,6 +174,14 @@ public class User {
 
 	public void setSavedAddresses(List<SavedAddress> savedAddresses) {
 		this.savedAddresses = savedAddresses;
+	}
+
+	public List<GasStation> getFavoriteGasStations() {
+		return favoriteGasStations;
+	}
+
+	public void setFavoriteGasStations(List<GasStation> favoriteGasStations) {
+		this.favoriteGasStations = favoriteGasStations;
 	}
 
 	//hashCode and equals
