@@ -77,7 +77,7 @@ class PriceReportTest {
 	
 	@Test
 	void test_PriceReport_ReportVote_otm_mapping() {
-		List<ReportVote> reportVotes = priceReport.getReportvotes();
+		List<ReportVote> reportVotes = priceReport.getReportVotes();
 		assertNotNull(reportVotes);
 		assertTrue(reportVotes.size() > 0);
 	}

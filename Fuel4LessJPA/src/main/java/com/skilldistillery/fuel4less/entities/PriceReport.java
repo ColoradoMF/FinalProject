@@ -8,6 +8,8 @@ import java.util.Objects;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -53,8 +55,9 @@ public class PriceReport {
 	@JoinColumn(name="fuel_type_id")
 	private FuelType fuelType;
 	
+	@JsonIgnoreProperties({"priceReport"})
 	@OneToMany(mappedBy = "priceReport")
-	List<ReportVote> reportvotes;
+	List<ReportVote> reportVotes;
 
 	public PriceReport() {
 		super();
@@ -132,12 +135,12 @@ public class PriceReport {
 		this.fuelType = fuelType;
 	}
 
-	public List<ReportVote> getReportvotes() {
-		return reportvotes;
+	public List<ReportVote> getReportVotes() {
+		return reportVotes;
 	}
 
-	public void setReportvotes(List<ReportVote> reportvotes) {
-		this.reportvotes = reportvotes;
+	public void setReportVotes(List<ReportVote> reportvotes) {
+		this.reportVotes = reportvotes;
 	}
 
 	@Override

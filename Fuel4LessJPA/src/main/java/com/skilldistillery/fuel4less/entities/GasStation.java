@@ -7,6 +7,8 @@ import java.util.Objects;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,15 +41,18 @@ public class GasStation {
 	private LocalDateTime updateDate;
 	private String remarks;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "favoriteGasStations")
 	private List<User> users;
 	
 	@ManyToMany(mappedBy = "gasStations")
 	private List<Tag> tags;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="gasStation")
 	private List<PriceReport> priceReports;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="gasStation")
 	private List<GasStationReview> gasStationReview;
 	

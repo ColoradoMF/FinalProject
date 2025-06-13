@@ -49,9 +49,12 @@ public class User {
 	inverseJoinColumns=@JoinColumn(name = "gas_station_id"))
 	private List<GasStation> favoriteGasStations;
 	
+	@JsonIgnore
 	@Column(name= "price_report")
 	@OneToMany(mappedBy = "user")
 	private List<PriceReport> priceReports;
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<GasStationReview> gasStationReviews;
 	
