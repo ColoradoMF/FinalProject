@@ -38,12 +38,11 @@
       </li>
         @if(! loggedIn()){
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login']">Login</a>
+         <app-login></app-login>
+          <!-- <a class="nav-link" [routerLink]="['/login']">Login</a> -->
         </li>
-        } @if(loggedIn()){
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/logout']">Logout</a>
-        </li>
+        }
+        @if(loggedIn()){
         <li class="nav-item">
           <app-logout></app-logout>
         </li>

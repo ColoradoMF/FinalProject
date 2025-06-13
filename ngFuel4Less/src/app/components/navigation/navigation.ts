@@ -4,10 +4,11 @@ import { Logout } from "../logout/logout";
 import { AuthService } from '../../services/auth-service';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Login } from "../login/login";
 
 @Component({
   selector: 'app-navigation',
-  imports: [RouterLink, Logout, FormsModule, NgbModule],
+  imports: [RouterLink, Logout, FormsModule, NgbModule, Login],
   templateUrl: './navigation.html',
   styleUrl: './navigation.css'
 })
