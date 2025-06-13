@@ -11,6 +11,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,6 +32,19 @@ public class GasStationReview {
 	@UpdateTimestamp
 	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name = "gas_station_id")
+	private GasStation gasStation;
+	
+
+	public GasStationReview() {
+		super();
+	}
 
 	public int getId() {
 		return id;
@@ -71,8 +86,21 @@ public class GasStationReview {
 		this.lastUpdate = lastUpdate;
 	}
 
-	public GasStationReview() {
-		super();
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	public GasStation getGasStation() {
+		return gasStation;
+	}
+
+	public void setGasStation(GasStation gasStation) {
+		this.gasStation = gasStation;
 	}
 
 	@Override

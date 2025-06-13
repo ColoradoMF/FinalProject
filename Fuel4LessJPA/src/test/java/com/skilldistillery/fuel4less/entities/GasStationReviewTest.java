@@ -52,5 +52,19 @@ class GasStationReviewTest {
 		assertNotNull(review);
 		assertEquals("this place stinks", review.getComment());
 	}
+	
+	@Test
+	void test_GasStationReview_User_mto_mapping() {
+		User user = review.getUser();
+		assertNotNull(user);
+		assertEquals("miles".toLowerCase(), user.getFirstName());
+	}
+	
+	@Test
+	void test_GasStationReview_GasStation_mto_mapping() {
+		GasStation gasStation = review.getGasStation();
+		assertNotNull(gasStation);
+		assertEquals("stinker".toLowerCase(), gasStation.getName().toLowerCase());
+	}
 
 }

@@ -7,8 +7,6 @@ import java.util.Objects;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -43,8 +42,17 @@ public class GasStation {
 	@ManyToMany(mappedBy = "favoriteGasStations")
 	private List<User> users;
 	
+	@ManyToMany(mappedBy = "gasStations")
+	private List<Tag> tags;
+	
+	@OneToMany(mappedBy="gasStation")
+	private List<PriceReport> priceReports;
+	
+	@OneToMany(mappedBy="gasStation")
+	private List<GasStationReview> gasStationReview;
+	
 	@OneToOne
-	@JoinColumn(name="address_id")
+	@JoinColumn(name = "address_id")
 	private Address address;
 	
 	public GasStation() {
@@ -105,6 +113,30 @@ public class GasStation {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
+	public List<PriceReport> getPriceReports() {
+		return priceReports;
+	}
+
+	public void setPriceReports(List<PriceReport> priceReports) {
+		this.priceReports = priceReports;
+	}
+
+	public List<GasStationReview> getGasStationReview() {
+		return gasStationReview;
+	}
+
+	public void setGasStationReview(List<GasStationReview> gasStationReview) {
+		this.gasStationReview = gasStationReview;
 	}
 
 	public Address getAddress() {
