@@ -1,1 +1,5 @@
-<p>login works!</p>
+ <form>
+            Username: <input type="text" name="username" placeholder="Username" [(ngModel)]="loginUser.username">
+            Password: <input type="password" name="password" [(ngModel)]="loginUser.password">
+            <button class="btn btn-danger" (click)="login(loginUser)">Login</button>
+          </form>

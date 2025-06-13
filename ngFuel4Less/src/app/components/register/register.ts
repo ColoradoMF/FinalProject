@@ -26,7 +26,7 @@ export class Register {
       next: (registeredInUser) => {
         this.auth.login(user.username, user.password).subscribe({
           next: (loggedInUser) => {
-            this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/profile');
           },
           error: (problem) => {
             console.error('RegisterComponent.register(): Error logging in');

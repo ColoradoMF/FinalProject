@@ -38,11 +38,7 @@
       </li>
         @if(! loggedIn()){
         <li class="nav-item">
-          <form>
-            Username: <input type="text" name="username" placeholder="Username">
-            Password: <input type="password" name="password">
-            <button class="btn btn-danger">Login</button>
-          </form>
+         <app-login></app-login>
           <!-- <a class="nav-link" [routerLink]="['/login']">Login</a> -->
         </li>
         }
