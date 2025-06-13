@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-sm bg-body-tertiary sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/home']">Home</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse"
+      id="navbarSupportedContent"
+      [ngbCollapse]="isCollapsed"
+    >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            [routerLink]="['/about']"
+            >About Us</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/contact']">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <input type="text" >
+          <button>Search</button>
+        <a class="nav-link" [routerLink]="['/search']"></a>
+      </li>
+        @if(! loggedIn()){
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
+        } @if(loggedIn()){
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/logout']">Logout</a>
+        </li>
+        <li class="nav-item">
+          <app-logout></app-logout>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
