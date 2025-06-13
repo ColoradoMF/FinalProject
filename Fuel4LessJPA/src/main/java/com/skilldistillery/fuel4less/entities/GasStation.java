@@ -7,12 +7,16 @@ import java.util.Objects;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -38,6 +42,10 @@ public class GasStation {
 	
 	@ManyToMany(mappedBy = "favoriteGasStations")
 	private List<User> users;
+	
+	@OneToOne
+	@JoinColumn(name="address_id")
+	private Address address;
 	
 	public GasStation() {
 		super();
@@ -97,6 +105,14 @@ public class GasStation {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override
