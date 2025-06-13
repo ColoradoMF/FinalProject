@@ -16,8 +16,8 @@ export class SavedAddress {
   name: String = '',
   createDate: string | null = null,
   lastUpdate: string | null = null,
-  user: User = new User,
-  address: Address = new Address,
+  user: User = new User(),
+  address: Address = new Address(),
   ){
     this.id = id;
     this.enabled = enabled;

@@ -8,7 +8,7 @@ export class GasStation {
   createdDate: string | null;
   updateDate: string | null;
   remarks: String;
-  users: User[];
+  // users: User[];
   address: Address;
 
   constructor(
@@ -18,7 +18,7 @@ export class GasStation {
   createdDate: string | null = null,
   updateDate: string | null = null,
   remarks: String = '',
-  users: User[] = [],
+  // users: User[] = [],
   address: Address = new Address(),
   ){
     this.id = id;
@@ -27,7 +27,7 @@ export class GasStation {
     this.createdDate = createdDate;
     this.updateDate = updateDate;
     this.remarks = remarks;
-    this.users = users;
+    // this.users = users;
     this.address = address;
   }
 }

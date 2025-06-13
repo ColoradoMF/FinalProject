@@ -15,8 +15,8 @@ export class ReportVote {
  vote: boolean = false,
  createDate: string | null = null,
  lastUpdate: string | null = null,
- user: User = new User,
- priceReport: PriceReport = new PriceReport,
+ user: User = new User(),
+ priceReport: PriceReport = new PriceReport(),
  ){
   this.id = id;
   this.vote = vote;
