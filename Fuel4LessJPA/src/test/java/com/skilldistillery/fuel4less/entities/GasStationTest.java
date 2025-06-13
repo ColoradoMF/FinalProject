@@ -55,6 +55,12 @@ class GasStationTest {
 	}
 	
 	@Test
+	void test_GasStation_Address_OTO_mapping() {
+		assertNotNull(gasStation);
+		assertEquals("80110", gasStation.getAddress().getZipCode());
+	}
+	
+	@Test
 	void test_GasStation_User_ManyToMany_mapping() {
 		List<User> users = gasStation.getUsers();
 		assertNotNull(gasStation);

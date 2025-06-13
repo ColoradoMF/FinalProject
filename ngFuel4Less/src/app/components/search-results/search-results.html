@@ -1,0 +1,7 @@
+<h1>Search Results</h1>
+
+@for (gasStation of gasStations; track $index) {
+
+  {{gasStation.name}}
+  {{gasStation.address.street}}
+}

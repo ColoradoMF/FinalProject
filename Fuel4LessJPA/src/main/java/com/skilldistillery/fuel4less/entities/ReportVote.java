@@ -2,13 +2,14 @@ package com.skilldistillery.fuel4less.entities;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,6 +20,7 @@ public class ReportVote {
 	private ReportVoteId id;
 	private boolean vote;
 	
+	@CreationTimestamp
 	@Column(name="create_date")
 	private LocalDateTime createDate;
 	

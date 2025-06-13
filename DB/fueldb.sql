@@ -288,9 +288,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `fueldb`;
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `first_name`, `last_name`, `image_url`, `biography`, `create_date`, `last_update`) VALUES (1, 'test', '$2a$10$nShOi5/f0bKNvHB8x0u3qOpeivazbuN0NE4TO0LGvQiTMafaBxLJS', 'test@test.test', 1, 'admin', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `first_name`, `last_name`, `image_url`, `biography`, `create_date`, `last_update`) VALUES (2, 'miles', 'miles', 'miles@miles.miles', 1, 'standard', 'miles', 'porter', 'no', 'n/a', '2025:06:12', '2025:06:12');
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `first_name`, `last_name`, `image_url`, `biography`, `create_date`, `last_update`) VALUES (3, 'mike', 'mike', 'mike@mike.mike', 1, 'standard', 'mike', 'francavilla', 'yes', 'n/a', '2025:06:12', '2025:06:12');
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `first_name`, `last_name`, `image_url`, `biography`, `create_date`, `last_update`) VALUES (4, 'jay', 'jay', 'jay@jay.jay', 1, 'standard', 'jay', 'yoon', 'maybe', 'n/a', '2025:06:12', '2025:06:12');
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `first_name`, `last_name`, `image_url`, `biography`, `create_date`, `last_update`) VALUES (2, 'miles', '$2a$10$Iuktd0XQOv.XO3J6iGmGn.ErR9GlL6CVg1ObqaGGvrkG40JbZ7ASK', 'miles@miles.miles', 1, 'standard', 'miles', 'porter', 'no', 'n/a', '2025:06:12', '2025:06:12');
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `first_name`, `last_name`, `image_url`, `biography`, `create_date`, `last_update`) VALUES (3, 'mike', '$2a$10$NMM2vYSKpXttrXWw5k1pG.4IBNc4mEYufDULfGiqB7bVa4F0DXD.G', 'mike@mike.mike', 1, 'standard', 'mike', 'francavilla', 'yes', 'n/a', '2025:06:12', '2025:06:12');
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `first_name`, `last_name`, `image_url`, `biography`, `create_date`, `last_update`) VALUES (4, 'jay', '$2a$10$1zQ8gbQOf3zRFFhmzdAZoOfkQR5zn1EC8WVLwzdptd1grVnlPWAxO', 'jay@jay.jay', 1, 'standard', 'jay', 'yoon', 'maybe', 'n/a', '2025:06:12', '2025:06:12');
 
 COMMIT;
 

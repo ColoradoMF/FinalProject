@@ -10,5 +10,6 @@ public interface GasStationService {
 	GasStation createGasStation(GasStation newGasStation);
 	GasStation updateGasStation(int gasStationId, GasStation updateGasStation);
 	boolean deleteGasStationById(int gasStationId);
+	List<GasStation> searchByZipCode(String name);
 
 }

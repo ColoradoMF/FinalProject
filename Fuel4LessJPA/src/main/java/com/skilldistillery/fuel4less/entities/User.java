@@ -27,20 +27,15 @@ public class User {
 	private String email;
 	private boolean enabled;
 	private String role;
-	
 	@Column(name="first_name")
 	private String firstName;
-	
 	@Column(name="last_name")
 	private String lastName;
-	
 	@Column(name="image_url")
-	private String imgUrl;
+	private String imageUrl;
 	private String biography;
-	
 	@Column(name="create_date")
 	private LocalDateTime createDate;
-	
 	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
 	
@@ -59,7 +54,6 @@ public class User {
 	private List<PriceReport> priceReports;
 	@OneToMany(mappedBy = "user")
 	private List<GasStationReview> gasStationReviews;
-	
 	
 	// Constructors
 	public User() {
@@ -142,12 +136,12 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getImgUrl() {
-		return imgUrl;
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
+	public void setImageUrl(String imgUrl) {
+		this.imageUrl = imgUrl;
 	}
 
 	public String getBiography() {
@@ -231,7 +225,7 @@ public class User {
 		builder.append("User [id=").append(id).append(", username=").append(username).append(", password=")
 				.append(password).append(", email=").append(email).append(", enabled=").append(enabled)
 				.append(", role=").append(role).append(", firstName=").append(firstName).append(", lastName=")
-				.append(lastName).append(", imgUrl=").append(imgUrl).append(", biography=").append(biography)
+				.append(lastName).append(", imgUrl=").append(imageUrl).append(", biography=").append(biography)
 				.append(", createDate=").append(createDate).append(", lastUpdate=").append(lastUpdate).append("]");
 		return builder.toString();
 	}

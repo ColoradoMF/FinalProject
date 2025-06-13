@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,9 +30,11 @@ public class GasStation {
 	@Column(name="image_url")
 	private String imageUrl;
 	
+	@CreationTimestamp
 	@Column(name="create_date")
 	private LocalDateTime createdDate;
 	
+	@UpdateTimestamp
 	@Column(name="update_date")
 	private LocalDateTime updateDate;
 	private String remarks;
@@ -45,7 +50,6 @@ public class GasStation {
 	
 	@OneToMany(mappedBy="gasStation")
 	private List<GasStationReview> gasStationReview;
-	
 	
 	@OneToOne
 	@JoinColumn(name = "address_id")

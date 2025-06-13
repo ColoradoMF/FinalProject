@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-sm bg-body-tertiary sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/home']">Home</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse"
+      id="navbarSupportedContent"
+      [ngbCollapse]="isCollapsed"
+    >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            [routerLink]="['/about']"
+            >About Us</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/contact']">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <form>
+            <input type="text" name="searchTerm" [(ngModel)]="searchTerm" />
+            <!-- <button (click)="loadSearchResults()">Search</button> -->
+          </form>
+          @if (searchTerm && searchTerm.length === 5) {
+          <a
+            class="nav-link btn btn-primary"
+            [routerLink]="['/search/' + searchTerm]"
+            >Search</a
+          >
+          }
+        </li>
+        @if(! loggedIn()){
+        <li class="nav-item">
+          <app-login></app-login>
+          <!-- <a class="nav-link" [routerLink]="['/login']">Login</a> -->
+        </li>
+        } @if(loggedIn()){
+        <li class="nav-item">
+          <app-logout></app-logout>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

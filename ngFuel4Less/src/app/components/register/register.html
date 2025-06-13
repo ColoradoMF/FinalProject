@@ -1,0 +1,40 @@
+<form>
+
+  <div class="row">
+    <label for="username" class="col-auto form-label">Username</label>
+    <input type="text" name="username" id="username" [(ngModel)]="newUser.username" class="col form-control">
+  </div>
+
+  <div class="row">
+    <label for="password" class="col-auto form-label">password</label>
+    <input type="password" name="password" id="password" [(ngModel)]="newUser.password" class="col form-control">
+  </div>
+
+  <div class="row">
+    <label for="email" class="col-auto form-label">email</label>
+    <input type="text" name="email" id="email" [(ngModel)]="newUser.email" class="col form-control">
+  </div>
+
+  <div class="row">
+    <label for="firstName" class="col-auto form-label">First Name</label>
+    <input type="text" name="firstName" id="firstName" [(ngModel)]="newUser.firstName" class="col form-control">
+  </div>
+
+  <div class="row">
+    <label for="lastName" class="col-auto form-label">Last Name</label>
+    <input type="text" name="lastName" id="lastName" [(ngModel)]="newUser.lastName" class="col form-control">
+  </div>
+
+  <div class="row">
+    <label for="imageUrl" class="col-auto form-label">Image URL</label>
+    <input type="text" name="imageUrl" id="imageUrl" [(ngModel)]="newUser.imageUrl" class="col form-control">
+  </div>
+
+  <div class="row">
+    <label for="biography" class="col-auto form-label">Biography</label>
+    <textarea name="biography" id="biography" cols="40" rows="4">Bio</textarea>
+  </div>
+
+  <button (click)="register(newUser)" class="btn btn-success">Register Account</button>
+
+</form>

@@ -2,6 +2,11 @@ package com.skilldistillery.fuel4less.entities;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -18,11 +23,15 @@ public class SavedAddress{
 	private boolean enabled;
 	private String name;
 	
+	@CreationTimestamp
 	@Column(name="create_date")
 	private LocalDateTime createDate;
 	
+	@UpdateTimestamp
 	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	@MapsId(value="userId")

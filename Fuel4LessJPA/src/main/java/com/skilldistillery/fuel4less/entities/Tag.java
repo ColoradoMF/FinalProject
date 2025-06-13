@@ -26,8 +26,8 @@ public class Tag {
 	private String description;
 	
 	@Column(name="image_url")
-	private String imgageUrl;
-	
+	private String imageUrl;
+
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "gas_station_has_tag",
@@ -63,12 +63,12 @@ public class Tag {
 		this.description = description;
 	}
 
-	public String getImgageUrl() {
-		return imgageUrl;
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
-	public void setImgageUrl(String imgageUrl) {
-		this.imgageUrl = imgageUrl;
+	public void setImageUrl(String imgageUrl) {
+		this.imageUrl = imgageUrl;
 	}
 
 	public List<GasStation> getGasStations() {
@@ -100,7 +100,7 @@ public class Tag {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Tag [id=").append(id).append(", name=").append(name).append(", description=")
-				.append(description).append(", imgageUrl=").append(imgageUrl).append("]");
+				.append(description).append(", imgageUrl=").append(imageUrl).append("]");
 		return builder.toString();
 	}
 	
