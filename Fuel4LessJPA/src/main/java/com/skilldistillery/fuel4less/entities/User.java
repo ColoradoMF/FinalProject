@@ -4,9 +4,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -37,10 +34,8 @@ public class User {
 	@Column(name="image_url")
 	private String imageUrl;
 	private String biography;
-	@CreationTimestamp
 	@Column(name="create_date")
 	private LocalDateTime createDate;
-	@UpdateTimestamp
 	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
 	
