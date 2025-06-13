@@ -2,10 +2,18 @@ package com.skilldistillery.fuel4less.services;
 
 import java.util.List;
 
-import com.skilldistillery.fuel4less.entities.GasStation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.skilldistillery.fuel4less.entities.GasStation;
+import com.skilldistillery.fuel4less.repositories.GasStationRepository;
+
+@Service
 public class GasStationServiceImpl implements GasStationService {
 
+	@Autowired
+	private GasStationRepository gasStationRepo;
+	
 	@Override
 	public GasStation findById(int id) {
 		// TODO Auto-generated method stub
@@ -34,6 +42,11 @@ public class GasStationServiceImpl implements GasStationService {
 	public boolean deleteGasStationById(int id) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<GasStation> searchByZipCode(String zipCode) {
+		return gasStationRepo.findByAddress_ZipCode(zipCode);
 	}
 
 }

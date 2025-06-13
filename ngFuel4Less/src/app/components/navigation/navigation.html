@@ -32,17 +32,24 @@
           <a class="nav-link" [routerLink]="['/contact']">Contact Us</a>
         </li>
         <li class="nav-item">
-          <input type="text" >
-          <button>Search</button>
-        <a class="nav-link" [routerLink]="['/search']"></a>
-      </li>
+          <form>
+            <input type="text" name="searchTerm" [(ngModel)]="searchTerm" />
+            <!-- <button (click)="loadSearchResults()">Search</button> -->
+          </form>
+          @if (searchTerm && searchTerm.length === 5) {
+          <a
+            class="nav-link btn btn-primary"
+            [routerLink]="['/search/' + searchTerm]"
+            >Search</a
+          >
+          }
+        </li>
         @if(! loggedIn()){
         <li class="nav-item">
-         <app-login></app-login>
+          <app-login></app-login>
           <!-- <a class="nav-link" [routerLink]="['/login']">Login</a> -->
         </li>
-        }
-        @if(loggedIn()){
+        } @if(loggedIn()){
         <li class="nav-item">
           <app-logout></app-logout>
         </li>

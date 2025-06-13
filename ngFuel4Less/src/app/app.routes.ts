@@ -12,7 +12,7 @@ export const routes: Routes = [
   {path: 'about', component: About},
   {path: 'contact', component: Contact},
   {path: 'profile', component: UserProfile},
-  {path: 'search', component: SearchResults},
+  {path: 'search/:zipCode', component: SearchResults},
   {path: '**', component: Notfound},
 
 ];
