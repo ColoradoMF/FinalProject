@@ -8,7 +8,7 @@ export class PriceReport {
 
 
   constructor(
-     id: number = 0,
+  id: number = 0,
   pricePerGallon: number = 0,
   enabled: boolean = false,
   createDate: string | null = null,
