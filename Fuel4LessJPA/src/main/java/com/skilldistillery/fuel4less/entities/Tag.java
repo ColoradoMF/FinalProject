@@ -20,7 +20,7 @@ public class Tag {
 	private String description;
 	
 	@Column(name="image_url")
-	private String imgageUrl;
+	private String imageUrl;
 
 	public Tag() {
 		super();
@@ -50,12 +50,12 @@ public class Tag {
 		this.description = description;
 	}
 
-	public String getImgageUrl() {
-		return imgageUrl;
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
-	public void setImgageUrl(String imgageUrl) {
-		this.imgageUrl = imgageUrl;
+	public void setImageUrl(String imgageUrl) {
+		this.imageUrl = imgageUrl;
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class Tag {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Tag [id=").append(id).append(", name=").append(name).append(", description=")
-				.append(description).append(", imgageUrl=").append(imgageUrl).append("]");
+				.append(description).append(", imgageUrl=").append(imageUrl).append("]");
 		return builder.toString();
 	}
 	
