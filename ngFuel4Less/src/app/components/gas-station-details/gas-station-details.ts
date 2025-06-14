@@ -40,6 +40,7 @@ export class GasStationDetails implements OnInit{
     this.gasStationService.show(gasStationId).subscribe({
       next: (gasStation) => {
          this.gasStation = gasStation;
+         //TODO call priceReportService to get recentPriceReports
       },
       error: (err) => {
         console.error(err);
