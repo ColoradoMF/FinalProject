@@ -1,3 +1,5 @@
+import { Fueltype } from "./fueltype";
+
 export class PriceReport {
   id: number;
   pricePerGallon: number;
@@ -5,6 +7,7 @@ export class PriceReport {
   createDate: string | null;
   lastUpdate: string | null;
   remarks: String;
+  fuelType: Fueltype;
 
 
   constructor(
@@ -14,6 +17,8 @@ export class PriceReport {
   createDate: string | null = null,
   lastUpdate: string | null = null,
   remarks: String = '',
+  fuelType: Fueltype = new Fueltype(),
+
   ){
     this.id = id;
     this.pricePerGallon = pricePerGallon;
@@ -21,6 +26,7 @@ export class PriceReport {
     this.createDate = createDate;
     this.lastUpdate = lastUpdate;
     this.remarks = remarks;
+    this.fuelType = fuelType;
   }
 
 }
