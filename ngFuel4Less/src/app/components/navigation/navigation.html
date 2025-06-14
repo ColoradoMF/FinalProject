@@ -36,13 +36,11 @@
             <input type="text" name="searchTerm" [(ngModel)]="searchTerm" />
             <!-- <button (click)="loadSearchResults()">Search</button> -->
           </form>
-          @if (searchTerm && searchTerm.length === 5) {
           <a
             class="nav-link btn btn-primary"
             [routerLink]="['/search/' + searchTerm]"
             >Search</a
           >
-          }
         </li>
         @if(! loggedIn()){
         <li class="nav-item">

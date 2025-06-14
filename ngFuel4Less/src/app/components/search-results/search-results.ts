@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { GasStation } from '../../models/gas-station';
 import { GasStationService } from '../../services/gas-station-service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-search-results',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './search-results.html',
   styleUrl: './search-results.css'
 })
 
 export class SearchResults {
   gasStations: GasStation[] = [];
+  gasStation: GasStation = new GasStation();
 
 constructor(
   private gasStationService: GasStationService,
@@ -43,11 +44,13 @@ ngOnInit(): void {
         this.gasStations = gasStations;
       },
       error: (err) => {
-          console.log(err);
-          console.log("GasStation.ts Component: Error loading Gas Stations");
+          console.error(err);
+          console.error("GasStation.ts Component: Error loading Gas Stations");
           this.router.navigateByUrl("ZipNotFound")
       }
     });
   }
+
+
 
 }

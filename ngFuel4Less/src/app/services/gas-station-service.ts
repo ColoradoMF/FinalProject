@@ -39,8 +39,7 @@ export class GasStationService {
 
   show(gasStationId: number): Observable<GasStation> {
     return this.http
-      .get<GasStation>(this.url + '/' + gasStationId, this.getHttpOptions())
-      .pipe(
+      .get<GasStation>(this.url + "/" + gasStationId, this.getHttpOptions()).pipe(
         catchError((err: any) => {
           console.log(err);
           return throwError(

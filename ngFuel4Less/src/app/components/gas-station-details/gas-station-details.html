@@ -1,1 +1,13 @@
-<p>gas-station-details works!</p>
+  <img [src]="gasStation.imageUrl ||
+  'https://cloudfront.codeproject.com/testing/1002904/test-url-redirects-httpwebrequest.jpg'
+  " width="200">
+<h1>{{gasStation.name}}</h1>
+<p>
+  {{gasStation.address.street}}
+</p>
+  <h1>{{gasStation.address.street2}}</h1>
+  <div>{{gasStation.address.city}}, {{gasStation.address.state}} {{gasStation.address.zipCode}}
+  </div>
+<table>
+  <!-- <h1>Fuel Prices: {{gasStation.priceReports.fuelType.name}}</h1> -->
+</table>

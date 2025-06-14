@@ -11,5 +11,6 @@ public interface PriceReportService {
 	PriceReport createPriceReport(PriceReport newPriceReport);
 	PriceReport updatePriceReport(int priceReportId, PriceReport updatePriceReport);
 	boolean deletePriceReportById(int priceReportId);
+	
 
 }

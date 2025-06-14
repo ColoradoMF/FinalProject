@@ -2,20 +2,26 @@ package com.skilldistillery.fuel4less.services;
 
 import java.util.List;
 
-import com.skilldistillery.fuel4less.entities.PriceReport;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.skilldistillery.fuel4less.entities.PriceReport;
+import com.skilldistillery.fuel4less.repositories.PriceReportRepository;
+
+@Service
 public class PriceReportServiceImpl implements PriceReportService {
+	
+	@Autowired
+	PriceReportRepository priceReportRepo;
 
 	@Override
 	public PriceReport findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return priceReportRepo.findById(id).orElse(null);
 	}
 
 	@Override
 	public List<PriceReport> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return priceReportRepo.findAll();
 	}
 
 	@Override

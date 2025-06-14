@@ -37,4 +37,19 @@ public class GasStationController {
 		return gasStations;
 
 	}
+	
+	@GetMapping("gasStations/{gasStationId}")
+	public GasStation show(
+			Principal principal,
+			HttpServletRequest req,
+			HttpServletResponse res,
+			@PathVariable("gasStationId") int gasStationId) {
+		GasStation gasStation = gasStationService.findById(gasStationId);
+		if(gasStation == null) {
+			res.setStatus(HttpServletResponse.SC_NOT_FOUND);
+		}
+		
+		return gasStation;
+		
+	}
 }

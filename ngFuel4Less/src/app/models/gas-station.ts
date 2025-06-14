@@ -1,4 +1,5 @@
 import { Address } from "./address";
+import { PriceReport } from "./price-report";
 import { User } from "./user";
 
 export class GasStation {
@@ -10,6 +11,7 @@ export class GasStation {
   remarks: String;
   // users: User[];
   address: Address;
+  priceReports: PriceReport[];
 
   constructor(
     id: number = 0,
@@ -20,6 +22,7 @@ export class GasStation {
   remarks: String = '',
   // users: User[] = [],
   address: Address = new Address(),
+  priceReports: PriceReport[] = []
   ){
     this.id = id;
     this.name = name;
@@ -29,5 +32,6 @@ export class GasStation {
     this.remarks = remarks;
     // this.users = users;
     this.address = address;
+    this.priceReports = priceReports;
   }
 }
