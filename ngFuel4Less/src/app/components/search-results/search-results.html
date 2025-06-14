@@ -1,7 +1,25 @@
 <h1>Search Results</h1>
 
-@for (gasStation of gasStations; track $index) {
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>ZipCode</th>
+    </tr>
+</thead>
+  <tbody>
+    @for (gasStation of gasStations; track gasStation.id) {
+      <tr>
+        <td>{{gasStation.name}}</td>
+        <td>{{gasStation.address.street}}</td>
+        <td>{{gasStation.address.zipCode}}</td>
 
-  {{gasStation.name}}
-  {{gasStation.address.street}}
-}
+      </tr>
+    }
+    @empty {
+      <tr><td colspan="4">No Gas Station found</td></tr>
+    }
+
+  </tbody>
+</table>
