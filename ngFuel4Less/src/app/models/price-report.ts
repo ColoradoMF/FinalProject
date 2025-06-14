@@ -1,4 +1,6 @@
 import { Fueltype } from "./fueltype";
+import { GasStation } from "./gas-station";
+import { User } from "./user";
 
 export class PriceReport {
   id: number;
@@ -8,6 +10,8 @@ export class PriceReport {
   lastUpdate: string | null;
   remarks: String;
   fuelType: Fueltype;
+  gasStation: GasStation;
+  user: User;
 
 
   constructor(
@@ -18,6 +22,9 @@ export class PriceReport {
   lastUpdate: string | null = null,
   remarks: String = '',
   fuelType: Fueltype = new Fueltype(),
+  gasStation: GasStation = new GasStation(),
+  user:User = new User()
+
 
   ){
     this.id = id;
@@ -27,6 +34,8 @@ export class PriceReport {
     this.lastUpdate = lastUpdate;
     this.remarks = remarks;
     this.fuelType = fuelType;
+    this.gasStation = gasStation;
+    this.user = user;
   }
 
 }
