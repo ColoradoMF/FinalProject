@@ -1,13 +1,34 @@
-  <img [src]="gasStation.imageUrl ||
+<img
+  [src]="gasStation.imageUrl ||
   'https://cloudfront.codeproject.com/testing/1002904/test-url-redirects-httpwebrequest.jpg'
-  " width="200">
+  "
+  width="100"
+/>
+<hr>
 <h1>{{gasStation.name}}</h1>
-<p>
-  {{gasStation.address.street}}
-</p>
-  <h1>{{gasStation.address.street2}}</h1>
-  <div>{{gasStation.address.city}}, {{gasStation.address.state}} {{gasStation.address.zipCode}}
-  </div>
-<table>
-  <!-- <h1>Fuel Prices: {{gasStation.priceReports.fuelType.name}}</h1> -->
+<p>{{gasStation.address.street}}</p>
+<h1>{{gasStation.address.street2}}</h1>
+<div>
+  {{gasStation.address.city}}, {{gasStation.address.state}}
+  {{gasStation.address.zipCode}}
+</div>
+<hr>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <td>Fuel Type</td>
+      <td>Price/Gal.</td>
+    </tr>
+  </thead>
+  <tbody>
+    @for (priceReport of gasStation.priceReports; track $index) {
+    <tr>
+      <td>{{priceReport.fuelType.name}}</td>
+      <td></td>
+      <td>{{priceReport.pricePerGallon}}</td>
+    </tr>
+  }
+  <hr>
+    <!-- <h1>Fuel Prices: {{gasStation.priceReports.fuelType.name}}</h1> -->
+  </tbody>
 </table>

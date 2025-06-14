@@ -1,3 +1,4 @@
+import { PriceReportService } from './../../services/price-report-service';
 import { GasStationService } from './../../services/gas-station-service';
 import { GasStation } from './../../models/gas-station';
 import { Component, OnInit } from '@angular/core';
@@ -16,6 +17,7 @@ export class GasStationDetails implements OnInit{
     private gasStationService: GasStationService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private priceReportService: PriceReportService,
   ){
 
   }
@@ -40,7 +42,7 @@ export class GasStationDetails implements OnInit{
     this.gasStationService.show(gasStationId).subscribe({
       next: (gasStation) => {
          this.gasStation = gasStation;
-         //TODO call priceReportService to get recentPriceReports
+         this.priceReportService.getRecentPriceReports(gasStation.id);
       },
       error: (err) => {
         console.error(err);
