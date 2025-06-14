@@ -5,6 +5,7 @@ import { Contact } from './components/contact/contact';
 import { UserProfile } from './components/user-profile/user-profile';
 import { SearchResults } from './components/search-results/search-results';
 import { Notfound } from './components/notfound/notfound';
+import { GasStationDetails } from './components/gas-station-details/gas-station-details';
 
 export const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -13,6 +14,7 @@ export const routes: Routes = [
   {path: 'contact', component: Contact},
   {path: 'profile', component: UserProfile},
   {path: 'search/:zipCode', component: SearchResults},
+  {path: 'gasStation/:gasStationId', component: GasStationDetails},
   {path: '**', component: Notfound},
 
 ];

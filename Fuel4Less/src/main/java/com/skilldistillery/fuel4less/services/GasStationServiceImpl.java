@@ -16,14 +16,7 @@ public class GasStationServiceImpl implements GasStationService {
 	
 	@Override
 	public GasStation findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<GasStation> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return gasStationRepo.findById(id).orElse(null);
 	}
 
 	@Override

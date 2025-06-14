@@ -11,7 +11,7 @@
   <tbody>
     @for (gasStation of gasStations; track gasStation.id) {
       <tr>
-        <td>{{gasStation.name}}</td>
+        <td [routerLink]="['/gasStation/' + gasStation.id]">{{gasStation.name}}</td>
         <td>{{gasStation.address.street}}</td>
         <td>{{gasStation.address.zipCode}}</td>
 
