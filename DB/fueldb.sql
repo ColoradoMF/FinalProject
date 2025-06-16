@@ -394,6 +394,14 @@ INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id
 INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (3, 2.88, 4, 3, 1, 1, '2025:06:12', '2025:06:12', 'very fragrant pricing');
 INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (4, 2.81, 3, 1, 1, 1, '2025:06:14', '2025:06:14', 'this place DOES stink');
 INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (5, 2.92, 3, 1, 2, 1, '2025:06:14', '2025:06:14', 'phew');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (6, 2.89, 2, 2, 2, 1, '2025:06:15', '2025:06:15', 'it is gas');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (7, 3.01, 2, 2, 3, 1, '2025:06:15', '2025:06:15', NULL);
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (8, 2.92, 2, 2, 4, 1, '2025:06:15', '2025:06:15', NULL);
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (9, 2.90, 4, 3, 2, 1, '2025:06:16', '2025:06:16', NULL);
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (10, 2.94, 4, 3, 3, 1, '2025:06:16', '2025:06:16', NULL);
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (11, 2.88, 4, 3, 4, 1, '2025:06:16', '2025:06:16', NULL);
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (12, 2.86, 4, 3, 1, 1, '2025:06:16', '2025:06:16', NULL);
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (13, 2.72, 3, 2, 1, 1, '2025:06:16', '2025:06:16', NULL);
 
 COMMIT;
 
