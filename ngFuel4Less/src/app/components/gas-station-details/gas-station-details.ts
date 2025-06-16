@@ -3,15 +3,19 @@ import { GasStationService } from './../../services/gas-station-service';
 import { GasStation } from './../../models/gas-station';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PriceReport } from '../../models/price-report';
+import { Fueltype } from '../../models/fueltype';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-gas-station-details',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './gas-station-details.html',
   styleUrl: './gas-station-details.css'
 })
 export class GasStationDetails implements OnInit{
   gasStation: GasStation = new GasStation();
+  recentPriceReports: PriceReport[] = [];
 
   constructor(
     private gasStationService: GasStationService,
@@ -42,16 +46,40 @@ export class GasStationDetails implements OnInit{
     this.gasStationService.show(gasStationId).subscribe({
       next: (gasStation) => {
          this.gasStation = gasStation;
-         this.priceReportService.getRecentPriceReports(gasStation.id);
-      },
-      error: (err) => {
-        console.error(err);
-        console.error("GasStation.ts Component: Error loading Gas Station")
-        this.router.navigateByUrl("GasStationNotFound")
+         this.loadRecentPrices();
+        },
+        error: (err) => {
+          console.error(err);
+          console.error("GasStation.ts Component: Error loading Gas Station")
+          this.router.navigateByUrl("GasStationNotFound")
+        }
+      })
+    }
+
+    loadRecentPrices() {
+      this.priceReportService.getRecentPriceReports(this.gasStation.id).subscribe({
+        next: (reports) => {
+         this.recentPriceReports = reports;
+        },
+        error: (err) => {
+          console.error(err);
+          console.error("GasStation.ts Component: Error loading Gas Station")
+          this.router.navigateByUrl("GasStationNotFound")
+        }
+      });
+  }
+
+  // createPriceReport(priceReport: PriceReport, fuelType: Fueltype): void{
+  createPriceReport(reportForm: NgForm): void{
+    let priceReport = reportForm.value;
+    console.log(priceReport);
+    this.priceReportService.createPriceReport(priceReport).subscribe({
+      next: (priceReport) => {
+        this.priceReportService.getRecentPriceReports(this.gasStation.id);
+
       }
     })
   }
-
 
 
 }
