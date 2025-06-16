@@ -4,7 +4,7 @@
   "
   width="100"
 />
-<hr>
+<hr />
 <h1>{{gasStation.name}}</h1>
 <p>{{gasStation.address.street}}</p>
 <h1>{{gasStation.address.street2}}</h1>
@@ -12,26 +12,33 @@
   {{gasStation.address.city}}, {{gasStation.address.state}}
   {{gasStation.address.zipCode}}
 </div>
-<hr>
+<hr />
 <table class="table table-dark">
   <thead>
     <tr>
-      <td>Fuel Type</td>
-      <td>Price/Gal.</td>
-      <td>Update Price here:</td>
-      <td></td>
+      <th>Fuel Type</th>
+      <th>Price/Gal.</th>
+      <th>Update Price here:</th>
+      <th>Reported:</th>
     </tr>
   </thead>
   <tbody class="table">
-    @for (priceReport of gasStation.priceReports; track $index) {
-    <tr>
-      <td>{{priceReport.fuelType.name}}</td>
-      <td>${{priceReport.pricePerGallon}}</td>
-      <td><input type="text" name="updatedPrice" placeholder="$ -.--"></td>
-      <td><button class="btn btn-warning">Update</button></td>
-    </tr>
-  }
-  <hr>
+    @for (priceReport of recentPriceReports; track $index) {
+      <tr>
+        <td>{{priceReport.fuelType.name}}</td>
+        <td>${{priceReport.pricePerGallon}}</td>
+        <td>
+          <form #newReportForm = "ngForm" (ngSubmit)="createPriceReport(newReportForm)">
+          <input type="text" name="pricePerGallon" placeholder="$ -.--" ngModel>
+          <input type="hidden" name="fuelType.id" value="priceReport.fuelType.id" ngModel>
+          <input type="hidden" name="gasStation.id" value="priceReport.gasStation.id" ngModel>
+          <button class="btn btn-warning">Update</button>
+        </form>
+        </td>
+        <td>{{priceReport.lastUpdate}} by {{priceReport.user.username}}</td>
+      </tr>
+    }
+    <hr />
     <!-- <h1>Fuel Prices: {{gasStation.priceReports.fuelType.name}}</h1> -->
   </tbody>
 </table>

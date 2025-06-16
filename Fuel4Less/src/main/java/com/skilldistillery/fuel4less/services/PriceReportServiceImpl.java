@@ -42,4 +42,10 @@ public class PriceReportServiceImpl implements PriceReportService {
 		return false;
 	}
 
+	@Override
+	public List<PriceReport> getMostRecent(int gasStationId) {
+		return priceReportRepo.getMostRecentPriceReport(gasStationId);
+	}
+	
+
 }

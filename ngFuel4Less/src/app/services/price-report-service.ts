@@ -11,6 +11,7 @@ import { PriceReport } from '../models/price-report';
 })
 export class PriceReportService {
   private url = environment.baseUrl + 'api/priceReports';
+  private url2 = environment.baseUrl + 'api/gasStations';
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
@@ -24,8 +25,8 @@ export class PriceReportService {
     return options;
   }
 
-  getRecentPriceReports(gasStationId: number): Observable<PriceReport>{
-    return this.http.get<PriceReport>(this.url + "/" + gasStationId, this.getHttpOptions()).pipe(
+  getRecentPriceReports(gasStationId: number): Observable<PriceReport[]>{
+    return this.http.get<PriceReport[]>(this.url2 + "/" + gasStationId + "/mostRecentReports", this.getHttpOptions()).pipe(
       catchError((nobueno: any) => {
         console.error(nobueno);
         return throwError(
