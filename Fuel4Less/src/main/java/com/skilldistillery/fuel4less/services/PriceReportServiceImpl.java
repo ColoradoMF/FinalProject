@@ -6,13 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.fuel4less.entities.PriceReport;
+import com.skilldistillery.fuel4less.entities.User;
 import com.skilldistillery.fuel4less.repositories.PriceReportRepository;
+import com.skilldistillery.fuel4less.repositories.UserRepository;
 
 @Service
 public class PriceReportServiceImpl implements PriceReportService {
 	
 	@Autowired
 	PriceReportRepository priceReportRepo;
+	
+	@Autowired
+	UserRepository userRepo;
 
 	@Override
 	public PriceReport findById(int id) {
@@ -25,8 +30,12 @@ public class PriceReportServiceImpl implements PriceReportService {
 	}
 
 	@Override
-	public PriceReport createPriceReport(PriceReport newPriceReport) {
-		// TODO Auto-generated method stub
+	public PriceReport createPriceReport(PriceReport newPriceReport, String userName) {
+		User user = userRepo.findByUsername(userName);
+		if(user != null) {
+			newPriceReport.setUser(user);
+			return priceReportRepo.saveAndFlush(newPriceReport);			
+		}
 		return null;
 	}
 

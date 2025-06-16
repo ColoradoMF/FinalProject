@@ -389,19 +389,19 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fueldb`;
-INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (1, 2.78, 2, 1, 1, 1, '2025:06:12', '2025:06:12', 'these prices stink');
-INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (2, 2.77, 3, 2, 1, 1, '2025:06:12', '2025:06:12', 'these prices smell good');
-INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (3, 2.88, 4, 3, 1, 1, '2025:06:12', '2025:06:12', 'very fragrant pricing');
-INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (4, 2.81, 3, 1, 1, 1, '2025:06:14', '2025:06:14', 'this place DOES stink');
-INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (5, 2.92, 3, 1, 2, 1, '2025:06:14', '2025:06:14', 'phew');
-INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (6, 2.89, 2, 2, 2, 1, '2025:06:15', '2025:06:15', 'it is gas');
-INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (7, 3.01, 2, 2, 3, 1, '2025:06:15', '2025:06:15', NULL);
-INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (8, 2.92, 2, 2, 4, 1, '2025:06:15', '2025:06:15', NULL);
-INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (9, 2.90, 4, 3, 2, 1, '2025:06:16', '2025:06:16', NULL);
-INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (10, 2.94, 4, 3, 3, 1, '2025:06:16', '2025:06:16', NULL);
-INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (11, 2.88, 4, 3, 4, 1, '2025:06:16', '2025:06:16', NULL);
-INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (12, 2.86, 4, 3, 1, 1, '2025:06:16', '2025:06:16', NULL);
-INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (13, 2.72, 3, 2, 1, 1, '2025:06:16', '2025:06:16', NULL);
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (1, 2.780, 2, 1, 1, 1, '2025-06-12 00:00:00', '2025-06-12 00:00:00', 'these prices stink');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (2, 2.770, 3, 2, 1, 1, '2025-06-12 00:00:00', '2025-06-12 00:00:00', 'these prices smell good');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (3, 2.880, 4, 3, 1, 1, '2025-06-12 00:00:00', '2025-06-12 00:00:00', 'very fragrant pricing');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (4, 2.810, 3, 1, 1, 1, '2025-06-14 00:00:00', '2025-06-14 00:00:00', 'this place DOES stink');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (5, 2.920, 3, 1, 2, 1, '2025-06-14 00:00:00', '2025-06-14 00:00:00', 'phew');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (6, 2.890, 2, 2, 2, 1, '2025-06-15 00:00:00', '2025-06-15 00:00:00', 'it is gas');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (7, 3.010, 2, 2, 3, 1, '2025-06-15 00:00:00', '2025-06-15 00:00:00', 'NULL');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (8, 2.920, 2, 2, 4, 1, '2025-06-15 00:00:00', '2025-06-15 00:00:00', 'NULL');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (9, 2.900, 4, 3, 2, 1, '2025-06-16 00:00:00', '2025-06-16 00:00:00', 'NULL');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (10, 2.940, 4, 3, 3, 1, '2025-06-16 00:00:00', '2025-06-16 00:00:00', 'NULL');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (11, 2.880, 4, 3, 4, 1, '2025-06-16 00:00:00', '2025-06-16 00:00:00', 'NULL');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (12, 2.860, 4, 3, 1, 1, '2025-06-16 00:00:00', '2025-06-16 00:00:00', 'NULL');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (13, 2.720, 3, 2, 1, 1, '2025-06-16 00:00:00', '2025-06-16 00:00:00', 'NULL');
 
 COMMIT;
 

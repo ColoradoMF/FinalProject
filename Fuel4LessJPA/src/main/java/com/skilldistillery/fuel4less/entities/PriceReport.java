@@ -8,6 +8,7 @@ import java.util.Objects;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -55,7 +56,8 @@ public class PriceReport {
 	@JoinColumn(name="fuel_type_id")
 	private FuelType fuelType;
 	
-	@JsonIgnoreProperties({"priceReport"})
+//	@JsonIgnoreProperties({"priceReport"})
+	@JsonIgnore
 	@OneToMany(mappedBy = "priceReport")
 	List<ReportVote> reportVotes;
 
