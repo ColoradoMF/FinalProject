@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -49,7 +50,26 @@ public class PriceReportController {
 	}	
 	
 	//TODO
-//	@PostMapping
-//	public 
+	@PostMapping("gasStations/{gasStationId}/priceReports")
+	public PriceReport createPriceReport(Principal principal,
+			HttpServletRequest req,
+			HttpServletResponse res,
+			@PathVariable("gasStationId") int gasStationId,
+			@RequestBody PriceReport priceReport) {
+		PriceReport createdReport = null;
+		try {
+			createdReport = priceReportService.createPriceReport(priceReport, principal.getName());
+				if(createdReport != null) {
+					res.setHeader("location", req.getRequestURL().toString());
+					res.setStatus(HttpServletResponse.SC_CREATED);
+				} else {
+					res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+				}
+		} catch (Exception e) {
+			res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			e.printStackTrace();
+		}
+		return createdReport;
+	}
 
 }

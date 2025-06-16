@@ -6,10 +6,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PriceReport } from '../../models/price-report';
 import { Fueltype } from '../../models/fueltype';
 import { FormsModule, NgForm } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-gas-station-details',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './gas-station-details.html',
   styleUrl: './gas-station-details.css'
 })
@@ -70,13 +71,17 @@ export class GasStationDetails implements OnInit{
   }
 
   // createPriceReport(priceReport: PriceReport, fuelType: Fueltype): void{
-  createPriceReport(reportForm: NgForm): void{
-    let priceReport = reportForm.value;
+  // createPriceReport(priceReport: PriceReport): void{
+  createPriceReport(formData: any): void{
+    let priceReport: PriceReport = new PriceReport(formData.id);
+    priceReport.fuelType = new Fueltype(formData.fuelTypeId);
+    priceReport.gasStation = new GasStation(formData.gasStationId);
+    priceReport.pricePerGallon = formData.pricePerGallon;
     console.log(priceReport);
     this.priceReportService.createPriceReport(priceReport).subscribe({
-      next: (priceReport) => {
-        this.priceReportService.getRecentPriceReports(this.gasStation.id);
-
+      next: (createdReport) => {
+        console.log(createdReport);
+        this.loadRecentPrices();
       }
     })
   }

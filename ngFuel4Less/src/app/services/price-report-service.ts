@@ -1,3 +1,4 @@
+import { ReportVote } from './../models/report-vote';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -39,7 +40,11 @@ export class PriceReportService {
   }
 
   createPriceReport(priceReport: PriceReport): Observable<PriceReport>{
-    return this.http.post<PriceReport>(this.url, priceReport).pipe(
+    delete priceReport.createDate;
+    delete priceReport.lastUpdate;
+    delete priceReport.reportVotes;
+    console.log(priceReport);
+    return this.http.post<PriceReport>(this.url2 + "/" + priceReport.gasStation.id + "/priceReports", priceReport, this.getHttpOptions()).pipe(
       catchError((nobueno: any) => {
         console.error(nobueno);
         return throwError(
