@@ -6,12 +6,13 @@ export class PriceReport {
   id: number;
   pricePerGallon: number;
   enabled: boolean;
-  createDate: string | null;
-  lastUpdate: string | null;
+  createDate: string | null | undefined;
+  lastUpdate: string | null | undefined;
   remarks: String;
   fuelType: Fueltype;
   gasStation: GasStation;
   user: User;
+  reportVotes: any;
 
 
   constructor(

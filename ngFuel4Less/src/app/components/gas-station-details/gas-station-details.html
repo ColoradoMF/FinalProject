@@ -23,15 +23,20 @@
     </tr>
   </thead>
   <tbody class="table">
-    @for (priceReport of recentPriceReports; track $index) {
+    @for (priceReport of recentPriceReports; track priceReport.id) {
       <tr>
         <td>{{priceReport.fuelType.name}}</td>
         <td>${{priceReport.pricePerGallon}}</td>
         <td>
-          <form #newReportForm = "ngForm" (ngSubmit)="createPriceReport(newReportForm)">
-          <input type="text" name="pricePerGallon" placeholder="$ -.--" ngModel>
-          <input type="hidden" name="fuelType.id" value="priceReport.fuelType.id" ngModel>
-          <input type="hidden" name="gasStation.id" value="priceReport.gasStation.id" ngModel>
+          <!-- <form #newReportForm = "ngForm" (ngSubmit)="createPriceReport(recentPriceReports[$index])">
+          <input type="text" name="pricePerGallon" placeholder="$ -.--" [(ngModel)]="recentPriceReports[$index].pricePerGallon">
+
+          <button class="btn btn-warning">Update</button>
+        </form> -->
+        <form #newReportForm = "ngForm" (ngSubmit)="createPriceReport(newReportForm.value)">
+          <input type="text" name="pricePerGallon" placeholder="$ -.--" [ngModel]="priceReport.pricePerGallon">
+          <input type="hidden" name="fuelTypeId" [ngModel]="priceReport.fuelType.id">
+          <input type="hidden" name="gasStationId" [ngModel]="priceReport.gasStation.id">
           <button class="btn btn-warning">Update</button>
         </form>
         </td>
