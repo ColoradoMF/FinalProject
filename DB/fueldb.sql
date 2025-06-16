@@ -392,6 +392,8 @@ USE `fueldb`;
 INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (1, 2.78, 2, 1, 1, 1, '2025:06:12', '2025:06:12', 'these prices stink');
 INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (2, 2.77, 3, 2, 1, 1, '2025:06:12', '2025:06:12', 'these prices smell good');
 INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (3, 2.88, 4, 3, 1, 1, '2025:06:12', '2025:06:12', 'very fragrant pricing');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (4, 2.81, 3, 1, 1, 1, '2025:06:14', '2025:06:14', 'this place DOES stink');
+INSERT INTO `price_report` (`id`, `price_per_gallon`, `user_id`, `gas_station_id`, `fuel_type_id`, `enabled`, `create_date`, `last_update`, `remarks`) VALUES (5, 2.92, 3, 1, 2, 1, '2025:06:14', '2025:06:14', 'phew');
 
 COMMIT;
 
