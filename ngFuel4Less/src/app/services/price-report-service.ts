@@ -37,4 +37,16 @@ export class PriceReportService {
     );
   }
 
+  createPriceReport(priceReport: PriceReport): Observable<PriceReport>{
+    return this.http.post<PriceReport>(this.url, priceReport).pipe(
+      catchError((nobueno: any) => {
+        console.error(nobueno);
+        return throwError(
+          () => new Error('PriceReportService.index(): error creating Price Report: ' +
+            nobueno
+          )
+        );
+      })
+    );
+  }
 }

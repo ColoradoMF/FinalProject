@@ -18,14 +18,17 @@
     <tr>
       <td>Fuel Type</td>
       <td>Price/Gal.</td>
+      <td>Update Price here:</td>
+      <td></td>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="table">
     @for (priceReport of gasStation.priceReports; track $index) {
     <tr>
       <td>{{priceReport.fuelType.name}}</td>
-      <td></td>
-      <td>{{priceReport.pricePerGallon}}</td>
+      <td>${{priceReport.pricePerGallon}}</td>
+      <td><input type="text" name="updatedPrice" placeholder="$ -.--"></td>
+      <td><button class="btn btn-warning">Update</button></td>
     </tr>
   }
   <hr>
