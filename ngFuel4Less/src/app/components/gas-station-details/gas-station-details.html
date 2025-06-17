@@ -1,49 +1,114 @@
-<img
-  [src]="gasStation.imageUrl ||
-  'https://cloudfront.codeproject.com/testing/1002904/test-url-redirects-httpwebrequest.jpg'
-  "
-  width="100"
-/>
-<hr />
-<h1>{{gasStation.name}}</h1>
-<p>{{gasStation.address.street}}</p>
-<h1>{{gasStation.address.street2}}</h1>
-<div>
-  {{gasStation.address.city}}, {{gasStation.address.state}}
-  {{gasStation.address.zipCode}}
-</div>
-<hr />
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th>Fuel Type</th>
-      <th>Price/Gal.</th>
-      <th>Update Price here:</th>
-      <th>Reported:</th>
-    </tr>
-  </thead>
-  <tbody class="table">
-    @for (priceReport of recentPriceReports; track priceReport.id) {
-      <tr>
-        <td>{{priceReport.fuelType.name}}</td>
-        <td>${{priceReport.pricePerGallon}}</td>
-        <td>
-          <!-- <form #newReportForm = "ngForm" (ngSubmit)="createPriceReport(recentPriceReports[$index])">
-          <input type="text" name="pricePerGallon" placeholder="$ -.--" [(ngModel)]="recentPriceReports[$index].pricePerGallon">
+<!-- <div class="container mt-4">
+  <div class="ratio ratio-16x9 mb-4 rounded shadow">
+    <iframe
+      [src]="mapUrl"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</div> -->
 
-          <button class="btn btn-warning">Update</button>
-        </form> -->
-        <form #newReportForm = "ngForm" (ngSubmit)="createPriceReport(newReportForm.value)">
-          <input type="text" name="pricePerGallon" placeholder="$ -.--" [ngModel]="priceReport.pricePerGallon">
-          <input type="hidden" name="fuelTypeId" [ngModel]="priceReport.fuelType.id">
-          <input type="hidden" name="gasStationId" [ngModel]="priceReport.gasStation.id">
-          <button class="btn btn-warning">Update</button>
-        </form>
-        </td>
-        <td>{{priceReport.lastUpdate}} by {{priceReport.user.username}}</td>
-      </tr>
-    }
-    <hr />
-    <!-- <h1>Fuel Prices: {{gasStation.priceReports.fuelType.name}}</h1> -->
-  </tbody>
-</table>
+<!-- Gas Station Image -->
+<div class="container mt-4">
+  <div class="col-sm-4">&nbsp;</div>
+  <div class="row" style="display: flex; align-items: center; justify-content: center;">
+    <div class="text-center mb-4 col-sm-4">
+      <img
+      [src]="gasStation.imageUrl || 'https://cloudfront.codeproject.com/testing/1002904/test-url-redirects-httpwebrequest.jpg'"
+      class="img-fluid rounded shadow"
+      style="max-height: 200px;"
+      alt="{{gasStation.name}} Image"
+      />
+    </div>
+    <div class="col-sm-4">
+      <h3>New Price Report</h3>
+      <form (ngSubmit)="submitPriceReport(newPriceReport)" >
+        <select name="fuelTypeId" [(ngModel)]="newPriceReport.fuelType.id">
+          <!-- <option value="0" disabled="true">Select Fuel Type</option> -->
+          @for (type of fuelTypes; track type.id) {
+            <option value="{{type.id}}" [disabled]="type.id===0">{{type.name}}</option>
+          }
+        </select>
+        <input
+                  type="text"
+                  name="pricePerGallon"
+                  placeholder="$ -.--"
+                  [(ngModel)]="newPriceReport.pricePerGallon"
+                  class="form-control form-control-sm"
+                  style="width: 100px;"
+                  required
+                />
+        <button class="btn btn-primary" [disabled]="newPriceReport.fuelType.id === 0">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Gas Station Info -->
+  <div class="mb-3 text-center">
+    <h1 class="fw-bold">{{ gasStation.name }}</h1>
+    <p class="mb-0">{{ gasStation.address.street }}</p>
+    <p class="mb-0" *ngIf="gasStation.address.street2">{{ gasStation.address.street2 }}</p>
+    <p>{{ gasStation.address.city }}, {{ gasStation.address.state }} {{ gasStation.address.zipCode }}</p>
+  </div>
+
+  <hr />
+
+  <!-- Price Report Table -->
+  <h3 class="mb-3">Fuel Price Reports</h3>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Fuel Type</th>
+          <th scope="col">Price/Gal.</th>
+          <th scope="col">Update Price</th>
+          <th scope="col">Last Reported</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (recentPriceReports.length === 0) {
+          <form>
+            <select name="fuelType">
+              <!-- @for (fuelType of items; track $index) {
+                <option value="{{fuelType.id}}">{{fuelType.name}}</option>
+              } -->
+            </select>
+          </form>
+        }
+        @for (priceReport of recentPriceReports; track priceReport.id) {
+          <tr>
+            <td>{{ priceReport.fuelType.name }}</td>
+            <td>${{ priceReport.pricePerGallon }}</td>
+            <td>
+              <form
+                #newReportForm="ngForm"
+                (ngSubmit)="createPriceReport(newReportForm.value)"
+                class="d-flex flex-column flex-md-row align-items-center gap-2"
+              >
+                <input
+                  type="text"
+                  name="pricePerGallon"
+                  placeholder="$ -.--"
+                  [ngModel]="priceReport.pricePerGallon"
+                  class="form-control form-control-sm"
+                  style="width: 100px;"
+                />
+                <input type="hidden" name="fuelTypeId" [ngModel]="priceReport.fuelType.id" />
+                <input type="hidden" name="gasStationId" [ngModel]="priceReport.gasStation.id" />
+                <button type="submit" class="btn btn-sm btn-warning">Update</button>
+              </form>
+            </td>
+            <td>
+              <span class="text-muted">
+                {{ priceReport.lastUpdate }}<br />
+                <small>by {{ priceReport.user.username }}</small>
+              </span>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

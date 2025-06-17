@@ -1,40 +1,83 @@
-<form>
+<!-- <form style="margin: 10px; justify-content: center; align-items: center; display: flex;">
 
   <div class="row">
-    <label for="username" class="col-auto form-label">Username</label>
-    <input type="text" name="username" id="username" [(ngModel)]="newUser.username" class="col form-control">
+    <label for="username" class="col-auto form-label">Username: </label>
+    <input type="text" name="username" id="username" [(ngModel)]="newUser.username" class="form-control w-25">
+
+    <label for="password" class="col-auto form-label">Password: </label>
+    <input type="password" name="password" id="password" [(ngModel)]="newUser.password" class="form-control w-25">
+
+    <label for="email" class="col-auto form-label">Email: </label>
+    <input type="text" name="email" id="email" [(ngModel)]="newUser.email" class="form-control w-25">
   </div>
 
   <div class="row">
-    <label for="password" class="col-auto form-label">password</label>
-    <input type="password" name="password" id="password" [(ngModel)]="newUser.password" class="col form-control">
+    <label for="firstName" class="col-auto form-label">First Name: </label>
+    <input type="text" name="firstName" id="firstName" [(ngModel)]="newUser.firstName" class="form-control w-25">
+
+    <label for="lastName" class="col-auto form-label">Last Name: </label>
+    <input type="text" name="lastName" id="lastName" [(ngModel)]="newUser.lastName" class="form-control w-25">
+
+    <label for="imageUrl" class="col-auto form-label">Image URL: </label>
+    <input type="text" name="imageUrl" id="imageUrl" [(ngModel)]="newUser.imageUrl" class="form-control w-25">
   </div>
 
   <div class="row">
-    <label for="email" class="col-auto form-label">email</label>
-    <input type="text" name="email" id="email" [(ngModel)]="newUser.email" class="col form-control">
-  </div>
-
-  <div class="row">
-    <label for="firstName" class="col-auto form-label">First Name</label>
-    <input type="text" name="firstName" id="firstName" [(ngModel)]="newUser.firstName" class="col form-control">
-  </div>
-
-  <div class="row">
-    <label for="lastName" class="col-auto form-label">Last Name</label>
-    <input type="text" name="lastName" id="lastName" [(ngModel)]="newUser.lastName" class="col form-control">
-  </div>
-
-  <div class="row">
-    <label for="imageUrl" class="col-auto form-label">Image URL</label>
-    <input type="text" name="imageUrl" id="imageUrl" [(ngModel)]="newUser.imageUrl" class="col form-control">
-  </div>
-
-  <div class="row">
-    <label for="biography" class="col-auto form-label">Biography</label>
+    <label for="biography" class="col-auto form-label">Biography: </label>
     <textarea name="biography" id="biography" cols="40" rows="4">Bio</textarea>
+
+    <button (click)="register(newUser)" class="btn btn-success">Register Account</button>
   </div>
 
-  <button (click)="register(newUser)" class="btn btn-success">Register Account</button>
+</form> -->
 
-</form>
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card shadow p-4 rounded" style="width: 100%; max-width: 800px;">
+    <h3 class="text-center mb-4">Create an Account</h3>
+
+    <form #registerForm="ngForm" (ngSubmit)="register(newUser)">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" name="username" id="username" [(ngModel)]="newUser.username" class="form-control" required>
+        </div>
+
+        <div class="col-md-6">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" name="password" id="password" [(ngModel)]="newUser.password" class="form-control" required>
+        </div>
+
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" name="email" id="email" [(ngModel)]="newUser.email" class="form-control" required>
+        </div>
+
+        <div class="col-md-6">
+          <label for="imageUrl" class="form-label">Image URL</label>
+          <input type="text" name="imageUrl" id="imageUrl" [(ngModel)]="newUser.imageUrl" class="form-control">
+        </div>
+
+        <div class="col-md-6">
+          <label for="firstName" class="form-label">First Name</label>
+          <input type="text" name="firstName" id="firstName" [(ngModel)]="newUser.firstName" class="form-control">
+        </div>
+
+        <div class="col-md-6">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input type="text" name="lastName" id="lastName" [(ngModel)]="newUser.lastName" class="form-control">
+        </div>
+
+        <div class="col-12">
+          <label for="biography" class="form-label">Biography</label>
+          <textarea name="biography" id="biography" [(ngModel)]="newUser.biography" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="col-12 text-center mt-3">
+          <button type="submit" class="btn btn-success px-5" [disabled]="!registerForm.form.valid">
+            Register Account
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
