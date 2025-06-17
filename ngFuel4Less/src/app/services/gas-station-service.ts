@@ -67,5 +67,16 @@ export class GasStationService {
     );
   }
 
+  create(gasStation: GasStation): Observable<GasStation> {
+    return this.http.post<GasStation>(this.url, gasStation).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('GasStationService.index(): error creating gasStation: ' + err)
+        );
+      })
+    );
+  }
+
 
 }

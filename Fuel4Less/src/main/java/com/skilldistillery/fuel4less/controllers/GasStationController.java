@@ -1,12 +1,9 @@
 package com.skilldistillery.fuel4less.controllers;
 
 import java.security.Principal;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.fuel4less.entities.GasStation;
-import com.skilldistillery.fuel4less.repositories.GasStationRepository;
 import com.skilldistillery.fuel4less.services.GasStationService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,9 +25,6 @@ public class GasStationController {
 	
 	@Autowired
 	private GasStationService gasStationService;
-	
-	@Autowired
-	private GasStationRepository gasStationRepo;
 	
 	@GetMapping("gasStations/search/{zipCode}")
 	public List<GasStation> index(
@@ -61,13 +54,21 @@ public class GasStationController {
 		return gasStation;
 		
 	}
-	@PostMapping
-    public ResponseEntity<GasStation> createGasStation(@RequestBody GasStation gasStation) {
-        gasStation.setCreatedDate(LocalDateTime.now());
-        gasStation.setUpdateDate(LocalDateTime.now());
-
-
-        GasStation saved = gasStationRepo.save(gasStation);
-        return new ResponseEntity<>(saved, HttpStatus.CREATED);
+	@PostMapping({"gasStations/", "gasStations"})
+    public GasStation createGasStation(Principal principal, HttpServletRequest req, HttpServletResponse res,@RequestBody GasStation gasStation) {
+		gasStation  = gasStationService.createGasStation(principal.getName(), gasStation);
+		try {
+			if (gasStation != null) {
+				res.setHeader("Location", req.getRequestURL().append("/").append(gasStation.getId()).toString());
+				res.setStatus(HttpServletResponse.SC_CREATED);
+			} else {
+				res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			}
+		} catch (Exception e) {
+			res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			e.printStackTrace();
+		}
+        return gasStation;
     }
+	
 }
