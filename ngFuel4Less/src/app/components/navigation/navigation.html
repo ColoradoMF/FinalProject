@@ -32,9 +32,11 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/contact']">Contact Us</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/profile']">My Profile</a>
-        </li>
+        @if (loggedIn()) {
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/profile']">My Profile</a>
+          </li>
+        }
         <li class="nav-item">
           <form>
             <input type="text" name="searchTerm" [(ngModel)]="searchTerm" />

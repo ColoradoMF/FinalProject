@@ -32,6 +32,7 @@ export class NewGasStation {
       next: (response) => {
         console.log('Success:', response);
         this.gasStation = new GasStation();
+        this.router.navigateByUrl("/gasStation/" + response.id);
       },
       error: (err) => {
         console.error('Error submitting:', err);

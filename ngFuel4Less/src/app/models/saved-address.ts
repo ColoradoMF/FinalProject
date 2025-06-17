@@ -1,8 +1,9 @@
 import { Address } from "./address";
+import { SavedAddressId } from "./saved-address-id";
 import { User } from "./user";
 
 export class SavedAddress {
-  id: number;
+  id: SavedAddressId;
   enabled: boolean;
   name: String;
   createDate: string | null;
@@ -11,7 +12,7 @@ export class SavedAddress {
   address: Address;
 
   constructor(
-    id: number = 0,
+    id: SavedAddressId = new SavedAddressId(0, 0),
   enabled: boolean = false,
   name: String = '',
   createDate: string | null = null,

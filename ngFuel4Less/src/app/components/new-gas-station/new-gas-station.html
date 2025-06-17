@@ -1,4 +1,4 @@
-<form (ngSubmit)="submitForm(gasStation)" #gasStationForm="ngForm">
+<!-- <form (ngSubmit)="submitForm(gasStation)" #gasStationForm="ngForm">
   <h2>New Gas Station</h2>
 
   <label for="name">Name:</label>
@@ -27,4 +27,63 @@
   <input type="text" id="zipCode" [(ngModel)]="gasStation.address.zipCode" name="zipCode" maxlength="5" class="form-control w-25" required> <br>
 
   <button type="submit" [disabled]="!gasStationForm.form.valid">Submit</button>
-</form>
+</form> -->
+
+
+<div class="container mt-4">
+  <form (ngSubmit)="submitForm(gasStation)" #gasStationForm="ngForm" class="p-4 border rounded shadow-sm bg-light">
+
+    <h2 class="mb-4 text-primary">Add New Gas Station</h2>
+
+    <!-- Gas Station Info -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Name:</label>
+      <input type="text" id="name" [(ngModel)]="gasStation.name" name="name" class="form-control w-50" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="imageUrl" class="form-label">Image URL:</label>
+      <input type="text" id="imageUrl" [(ngModel)]="gasStation.imageUrl" name="imageUrl" class="form-control w-50">
+    </div>
+
+    <div class="mb-4">
+      <label for="remarks" class="form-label">Remarks:</label>
+      <textarea id="remarks" [(ngModel)]="gasStation.remarks" name="remarks" rows="3" class="form-control w-50"></textarea>
+    </div>
+
+    <!-- Address Section -->
+    <h4 class="text-secondary mb-3">Address</h4>
+
+    <div class="mb-3">
+      <label for="street" class="form-label">Street:</label>
+      <input type="text" id="street" [(ngModel)]="gasStation.address.street" name="street" class="form-control w-50" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="street2" class="form-label">Street 2:</label>
+      <input type="text" id="street2" [(ngModel)]="gasStation.address.street2" name="street2" class="form-control w-50">
+    </div>
+
+    <div class="mb-3">
+      <label for="city" class="form-label">City:</label>
+      <input type="text" id="city" [(ngModel)]="gasStation.address.city" name="city" class="form-control w-50" required>
+    </div>
+
+    <div class="row mb-3 g-2 w-50">
+      <div class="col-md-6">
+        <label for="state" class="form-label">State:</label>
+        <input type="text" id="state" [(ngModel)]="gasStation.address.state" name="state" maxlength="2" class="form-control" required>
+      </div>
+      <div class="col-md-6">
+        <label for="zipCode" class="form-label">Zip Code:</label>
+        <input type="text" id="zipCode" [(ngModel)]="gasStation.address.zipCode" name="zipCode" maxlength="5" class="form-control" required>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-success mt-3" [disabled]="!gasStationForm.form.valid">
+      Submit Gas Station
+    </button>
+
+  </form>
+</div>

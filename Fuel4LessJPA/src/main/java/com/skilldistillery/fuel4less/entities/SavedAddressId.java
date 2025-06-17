@@ -18,6 +18,14 @@ public class SavedAddressId implements Serializable{
 	public SavedAddressId() {
 		super();
 	}
+	
+	public SavedAddressId(int userId, int addressId) {
+		super();
+		this.userId = userId;
+		this.addressId = addressId;
+	}
+
+
 
 	public int getUserId() {
 		return userId;

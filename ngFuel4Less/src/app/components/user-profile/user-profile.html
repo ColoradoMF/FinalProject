@@ -1,1 +1,163 @@
-<p>user-profile works!</p>
+<!-- <div class="container" name="profileInfo">
+  <h1>Hello, {{user.firstName}}</h1>
+  <img [src]="user.imageUrl" alt="" />
+  <ul>
+    <li>
+      Name: {{user.firstName}} {{user.lastName}}
+    </li>
+    <li>
+      Email: {{user.email}}
+    </li>
+    <li>
+      Biography: {{user.biography}}
+    </li>
+  </ul>
+</div>
+<div name="savedAddresses" class="container-fluid" style="display: flex;">
+  <hr>
+<table class="table table-hover" style="width: 50%;">
+  <thead class="table-dark">
+    <tr>
+      <th>Address Name</th>
+      <th>Address Details</th>
+      <th>Search</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (savedAddress of user.savedAddresses; track $index) {
+      <tr>
+        <td>{{savedAddress.name}}</td>
+        <td>{{savedAddress.address.street}}, {{savedAddress.address.street2}},
+          {{savedAddress.address.city}}, {{savedAddress.address.state}},
+          {{savedAddress.address.zipCode}}</td>
+          <td> <a
+            class="btn btn-success"
+            [routerLink]="['/search/' + savedAddress.address.zipCode]"
+            >Search</a
+          ></td>
+      </tr>
+    }
+
+  </tbody>
+</table>
+<hr>
+<form style="width: 50%; margin-left: 100px;" #formRef="ngForm" (ngSubmit)="submitForm(newSavedAddress)" name="newSavedAddressForm">
+  <label for="name">Address Label: </label>
+  <input type="text" name="name" [(ngModel)]="newSavedAddress.name" class="form-control w-25" required>
+
+  <label for="street">Street: </label>
+  <input type="text" name="street" [(ngModel)]="newSavedAddress.address.street" class="form-control w-25">
+
+  <label for="street2">Street 2: </label>
+  <input type="text" name="street2" [(ngModel)]="newSavedAddress.address.street2" class="form-control w-25">
+
+  <label for="city">City: </label>
+  <input type="text" name="city" [(ngModel)]="newSavedAddress.address.city" class="form-control w-25">
+
+  <label for="state">State: </label>
+  <input type="text" name="state" [(ngModel)]="newSavedAddress.address.state" maxlength="2" class="form-control w-25">
+
+  <label for="zipCode">Zip Code: </label>
+  <input type="text" name="zipCode" [(ngModel)]="newSavedAddress.address.zipCode" minlength="5" maxlength="5" class="form-control w-25" required>
+
+  <button class="btn btn-danger mt-3" [disabled]="!formRef.form.valid">Add New Address</button>
+</form>
+<br>
+<br>
+<br>
+
+</div> -->
+
+
+<div class="container mt-5" name="profileInfo">
+  <div class="card shadow p-4">
+    <h1 class="mb-4">Hello, {{ user.firstName }}</h1>
+    <div class="row g-4 align-items-center">
+      <div class="col-md-3 text-center">
+        <img [src]="user.imageUrl" alt="Profile Image" class="img-thumbnail" style="max-width: 100%;">
+      </div>
+      <div class="col-md-9">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</li>
+          <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+          <li class="list-group-item"><strong>Biography:</strong> {{ user.biography }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Saved Addresses and Form -->
+<div class="container-fluid mt-5" name="savedAddresses">
+  <div class="row">
+    <!-- Address Table -->
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+          <h5 class="mb-0">Saved Addresses</h5>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-hover mb-0">
+            <thead class="table-light">
+              <tr>
+                <th>Label</th>
+                <th>Details</th>
+                <th>Search</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (savedAddress of user.savedAddresses; track $index) {
+                <tr>
+                  <td>{{ savedAddress.name }}</td>
+                  <td>
+                    {{ savedAddress.address.street }} {{ savedAddress.address.street2 }},
+                    {{ savedAddress.address.city }}, {{ savedAddress.address.state }}
+                    {{ savedAddress.address.zipCode }}
+                  </td>
+                  <td>
+                    <a class="btn btn-success btn-sm"
+                      [routerLink]="['/search/' + savedAddress.address.zipCode]">Search</a>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Address Form -->
+    <div class="col-md-6">
+      <div class="card shadow p-4">
+        <h5 class="card-title mb-3">Add New Address</h5>
+        <form #formRef="ngForm" (ngSubmit)="submitForm(newSavedAddress)" name="newSavedAddressForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Address Label</label>
+            <input type="text" name="name" [(ngModel)]="newSavedAddress.name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="street" class="form-label">Street</label>
+            <input type="text" name="street" [(ngModel)]="newSavedAddress.address.street" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="street2" class="form-label">Street 2</label>
+            <input type="text" name="street2" [(ngModel)]="newSavedAddress.address.street2" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input type="text" name="city" [(ngModel)]="newSavedAddress.address.city" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="state" class="form-label">State</label>
+            <input type="text" name="state" [(ngModel)]="newSavedAddress.address.state" maxlength="2" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="zipCode" class="form-label">Zip Code</label>
+            <input type="text" name="zipCode" [(ngModel)]="newSavedAddress.address.zipCode" minlength="5" maxlength="5" class="form-control" required>
+          </div>
+          <button class="btn btn-danger w-100" [disabled]="!formRef.form.valid">Add Address</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

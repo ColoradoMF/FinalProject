@@ -7,6 +7,7 @@ import { PriceReport } from '../../models/price-report';
 import { Fueltype } from '../../models/fueltype';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FuelTypeService } from '../../services/fuel-type-service';
 
 @Component({
   selector: 'app-gas-station-details',
@@ -17,12 +18,15 @@ import { CommonModule } from '@angular/common';
 export class GasStationDetails implements OnInit{
   gasStation: GasStation = new GasStation();
   recentPriceReports: PriceReport[] = [];
+  fuelTypes: Fueltype[] = [];
+  newPriceReport: PriceReport = new PriceReport();
 
   constructor(
     private gasStationService: GasStationService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private priceReportService: PriceReportService,
+    private fuelTypeService: FuelTypeService,
   ){
 
   }
@@ -46,8 +50,9 @@ export class GasStationDetails implements OnInit{
   displayDetails(gasStationId: number): void{
     this.gasStationService.show(gasStationId).subscribe({
       next: (gasStation) => {
-         this.gasStation = gasStation;
-         this.loadRecentPrices();
+        this.gasStation = gasStation;
+        this.loadRecentPrices();
+        this.loadFuelTypes();
         },
         error: (err) => {
           console.error(err);
@@ -70,14 +75,31 @@ export class GasStationDetails implements OnInit{
       });
   }
 
-  // createPriceReport(priceReport: PriceReport, fuelType: Fueltype): void{
-  // createPriceReport(priceReport: PriceReport): void{
+    loadFuelTypes() {
+      this.fuelTypeService.index().subscribe({
+        next: (fuelTypes) => {
+          fuelTypes.unshift(new Fueltype(0, "-- Choose Fuel Type --"))
+         this.fuelTypes = fuelTypes;
+        },
+        error: (err) => {
+          console.error(err);
+          console.error("GasStation.ts Component: Error loading Fuel Types")
+        }
+      });
+  }
+
   createPriceReport(formData: any): void{
     let priceReport: PriceReport = new PriceReport(formData.id);
     priceReport.fuelType = new Fueltype(formData.fuelTypeId);
     priceReport.gasStation = new GasStation(formData.gasStationId);
     priceReport.pricePerGallon = formData.pricePerGallon;
     console.log(priceReport);
+    this.submitPriceReport(priceReport);
+  }
+
+  submitPriceReport(priceReport: PriceReport) {
+      priceReport.gasStation = this.gasStation;
+
     this.priceReportService.createPriceReport(priceReport).subscribe({
       next: (createdReport) => {
         console.log(createdReport);
@@ -86,5 +108,9 @@ export class GasStationDetails implements OnInit{
     })
   }
 
+  get mapUrl(): string {
+  const address = `${this.gasStation.address.street}, ${this.gasStation.address.city}, ${this.gasStation.address.state} ${this.gasStation.address.zipCode}`;
+  return `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+}
 
 }

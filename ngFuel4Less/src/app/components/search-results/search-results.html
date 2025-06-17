@@ -1,4 +1,4 @@
-<h1>Search Results</h1>
+<!-- <h1>Search Results</h1>
 
 <table class="table table-striped">
   <thead>
@@ -22,4 +22,39 @@
     }
 
   </tbody>
-</table>
+</table> -->
+
+
+<div class="container mt-5">
+  <h2 class="mb-4">Search Results</h2>
+
+  <div class="table-responsive">
+    <table class="table table-striped align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Street Address</th>
+          <th scope="col">Zip Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (gasStation of gasStations; track gasStation.id) {
+          <tr>
+            <td>
+              <a [routerLink]="['/gasStation/' + gasStation.id]" class="text-decoration-none text-primary fw-semibold">
+                {{ gasStation.name }}
+              </a>
+            </td>
+            <td>{{ gasStation.address.street }}</td>
+            <td>{{ gasStation.address.zipCode }}</td>
+          </tr>
+        }
+        @empty {
+          <tr>
+            <td colspan="3" class="text-center text-muted py-3">No gas stations found.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
