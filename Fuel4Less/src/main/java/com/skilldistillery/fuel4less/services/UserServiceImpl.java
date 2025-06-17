@@ -49,6 +49,11 @@ public class UserServiceImpl implements UserService {
 		return userRepo.findAll();
 	}
 
+	@Override
+	public User findById(int userId) {
+		return userRepo.findById(userId).orElse(null);
+	}
+
  
 
 }

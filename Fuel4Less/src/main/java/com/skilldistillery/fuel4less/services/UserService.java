@@ -15,6 +15,8 @@ public interface UserService {
 	boolean deleteUser(int id);
 	
 	List<User> findAll();
+
+	User findById(int userId);
 	
 
 }

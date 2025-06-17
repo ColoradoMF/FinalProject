@@ -13,6 +13,7 @@ export const routes: Routes = [
   {path: 'about', component: About},
   {path: 'contact', component: Contact},
   {path: 'profile', component: UserProfile},
+  {path: 'profile/:userId', component: UserProfile},
   {path: 'search/:zipCode', component: SearchResults},
   {path: 'gasStation/:gasStationId', component: GasStationDetails},
   {path: '**', component: Notfound},
