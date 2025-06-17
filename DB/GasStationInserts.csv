@@ -1,0 +1,4 @@
+id,name,address_id,image_url,create_date,update_date,remarks
+1,Stinker,1,https://a.mktgcdn.com/p/MOQBu9QL_-Z0jxH_p_eNZQrKkqVxrxFtMfg6sPjW-IE/1809x1809.png,2025:06:12,2025:06:12,"Some remarks"
+2,"Murphy USA",2,https://www.scrapehero.com/store/wp-content/uploads/2020/11/Murphy_USA_USA.png,2025:06:12,2025:06:12,"Other remarks"
+3,Shell,5,https://northwoodsinnpickerel.com/wp-content/uploads/2016/03/Shell-gas-station-logo-trans.png,2025:06:12,2025:06:12,"Even more remarks"
