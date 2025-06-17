@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { GasStation } from '../../models/gas-station';
 import { HttpClient } from '@angular/common/http';
+import { GasStationService } from '../../services/gas-station-service';
 
 @Component({
   selector: 'app-new-gas-station',
@@ -19,15 +20,15 @@ export class NewGasStation {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private http: HttpClient
+    private gasStationService: GasStationService,
   ){
 
   }
 
 
-  submitForm() {
+  submitForm(gasStation: GasStation) {
     console.log('Submitting:', this.gasStation);
-    this.http.post('/api/gasStations', this.gasStation).subscribe({
+    this.gasStationService.create(gasStation).subscribe({
       next: (response) => {
         console.log('Success:', response);
         this.gasStation = new GasStation();

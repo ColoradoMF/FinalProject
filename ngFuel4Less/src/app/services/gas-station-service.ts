@@ -68,7 +68,9 @@ export class GasStationService {
   }
 
   create(gasStation: GasStation): Observable<GasStation> {
-    return this.http.post<GasStation>(this.url, gasStation).pipe(
+    console.log(this.url);
+    console.log(gasStation);
+    return this.http.post<GasStation>(this.url, gasStation, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
