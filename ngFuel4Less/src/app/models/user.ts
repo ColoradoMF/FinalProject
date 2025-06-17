@@ -1,5 +1,6 @@
 import { Address } from "./address";
 import { GasStation } from "./gas-station";
+import { SavedAddress } from "./saved-address";
 
 export class User {
   id: number ;
@@ -13,8 +14,9 @@ export class User {
   imageUrl: String;
   createDate: string | null;
   lastUpdate: string | null;
-  savedAddresses: Address[];
+  savedAddresses: SavedAddress[];
   favoriteGasStations: GasStation[];
+  biography: String;
 
 
   constructor(
@@ -29,8 +31,9 @@ export class User {
   imageUrl: String = '',
   createDate: string | null = null,
   lastUpdate: string | null = null,
-  savedAddresses: Address[] = [],
+  savedAddresses: SavedAddress[] = [],
   favoriteGasStations: GasStation[] = [],
+    biography: String = '',
 
   ){
     this.id = id;
@@ -46,6 +49,7 @@ export class User {
     this.lastUpdate = lastUpdate;
     this.savedAddresses = savedAddresses;
     this.favoriteGasStations = favoriteGasStations;
+    this.biography = biography;
 
   }
 }
