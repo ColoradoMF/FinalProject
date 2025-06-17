@@ -8,7 +8,7 @@ public interface AddressService {
 	
 	Address findById(int id);
 	List <Address> findAll();
-	Address createAddress(Address newAddress);
+	Address createAddress(String username, Address newAddress);
 	Address updateAddress(int addressId, Address updateAddress);
 	boolean deleteAddressById(int addressId);
 
