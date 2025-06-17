@@ -1,15 +1,16 @@
 import { SavedAddressService } from './../../services/saved-address-service';
 import { Component } from '@angular/core';
 import { User } from '../../models/user';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user-service';
 import { AuthService } from '../../services/auth-service';
 import { FormsModule } from '@angular/forms';
 import { SavedAddress } from '../../models/saved-address';
+import { GasStationService } from '../../services/gas-station-service';
 
 @Component({
   selector: 'app-user-profile',
-  imports: [FormsModule, ],
+  imports: [FormsModule, RouterLink],
   templateUrl: './user-profile.html',
   styleUrl: './user-profile.css'
 })
@@ -26,6 +27,7 @@ export class UserProfile {
     private userService: UserService,
     private auth: AuthService,
     private savedAddressService: SavedAddressService,
+    private gasStationService: GasStationService,
   ){}
 
   ngOnInit(): void {
@@ -45,6 +47,10 @@ export class UserProfile {
 
       }
     })
+  }
+
+  findByZipCode(zipCode: string) {
+    this.gasStationService.searchByZip(zipCode);
   }
 
   getLoggedInUser() {

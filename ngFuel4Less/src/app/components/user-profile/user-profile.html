@@ -13,13 +13,14 @@
     </li>
   </ul>
 </div>
-<div name="savedAddresses" class="container-fluid">
+<div name="savedAddresses" class="container-fluid" style="display: flex;">
   <hr>
-<table class="table table-hover">
+<table class="table table-hover" style="width: 50%;">
   <thead class="table-dark">
     <tr>
       <th>Address Name</th>
       <th>Address Details</th>
+      <th>Search</th>
     </tr>
   </thead>
   <tbody>
@@ -29,13 +30,18 @@
         <td>{{savedAddress.address.street}}, {{savedAddress.address.street2}},
           {{savedAddress.address.city}}, {{savedAddress.address.state}},
           {{savedAddress.address.zipCode}}</td>
+          <td> <a
+            class="btn btn-success"
+            [routerLink]="['/search/' + savedAddress.address.zipCode]"
+            >Search</a
+          ></td>
       </tr>
     }
 
   </tbody>
 </table>
 <hr>
-<form #formRef="ngForm" (ngSubmit)="submitForm(newSavedAddress)" name="newSavedAddressForm">
+<form style="width: 50%; margin-left: 100px;" #formRef="ngForm" (ngSubmit)="submitForm(newSavedAddress)" name="newSavedAddressForm">
   <label for="name">Address Label: </label>
   <input type="text" name="name" [(ngModel)]="newSavedAddress.name" class="form-control w-25" required>
 
