@@ -21,8 +21,7 @@ public class GasStationServiceImpl implements GasStationService {
 
 	@Override
 	public GasStation createGasStation(GasStation newGasStation) {
-		// TODO Auto-generated method stub
-		return null;
+		return gasStationRepo.saveAndFlush(newGasStation);
 	}
 
 	@Override
