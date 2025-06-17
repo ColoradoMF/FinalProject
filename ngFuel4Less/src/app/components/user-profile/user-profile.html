@@ -14,8 +14,9 @@
   </ul>
 </div>
 <div name="savedAddresses" class="container-fluid">
-<table>
-  <thead>
+  <hr>
+<table class="table table-hover">
+  <thead class="table-dark">
     <tr>
       <th>Address Name</th>
       <th>Address Details</th>
@@ -25,10 +26,38 @@
     @for (savedAddress of user.savedAddresses; track $index) {
       <tr>
         <td>{{savedAddress.name}}</td>
-        <td>{{savedAddress.address.street}}, {{savedAddress.address.street2}}, {{savedAddress.address.city}}, {{savedAddress.address.state}}, {{savedAddress.address.zipCode}}</td>
+        <td>{{savedAddress.address.street}}, {{savedAddress.address.street2}},
+          {{savedAddress.address.city}}, {{savedAddress.address.state}},
+          {{savedAddress.address.zipCode}}</td>
       </tr>
     }
+
   </tbody>
 </table>
+<hr>
+<form #formRef="ngForm" (ngSubmit)="submitForm(newSavedAddress)" name="newSavedAddressForm">
+  <label for="name">Address Label: </label>
+  <input type="text" name="name" [(ngModel)]="newSavedAddress.name" class="form-control w-25" required>
+
+  <label for="street">Street: </label>
+  <input type="text" name="street" [(ngModel)]="newSavedAddress.address.street" class="form-control w-25">
+
+  <label for="street2">Street 2: </label>
+  <input type="text" name="street2" [(ngModel)]="newSavedAddress.address.street2" class="form-control w-25">
+
+  <label for="city">City: </label>
+  <input type="text" name="city" [(ngModel)]="newSavedAddress.address.city" class="form-control w-25">
+
+  <label for="state">State: </label>
+  <input type="text" name="state" [(ngModel)]="newSavedAddress.address.state" maxlength="2" class="form-control w-25">
+
+  <label for="zipCode">Zip Code: </label>
+  <input type="text" name="zipCode" [(ngModel)]="newSavedAddress.address.zipCode" minlength="5" maxlength="5" class="form-control w-25" required>
+
+  <button class="btn btn-danger mt-3" [disabled]="!formRef.form.valid">Add New Address</button>
+</form>
+<br>
+<br>
+<br>
 
 </div>

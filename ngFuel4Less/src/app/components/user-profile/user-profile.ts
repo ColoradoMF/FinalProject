@@ -1,17 +1,23 @@
+import { SavedAddressService } from './../../services/saved-address-service';
 import { Component } from '@angular/core';
 import { User } from '../../models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user-service';
 import { AuthService } from '../../services/auth-service';
+import { FormsModule } from '@angular/forms';
+import { SavedAddress } from '../../models/saved-address';
 
 @Component({
   selector: 'app-user-profile',
-  imports: [],
+  imports: [FormsModule, ],
   templateUrl: './user-profile.html',
   styleUrl: './user-profile.css'
 })
 export class UserProfile {
+
   user: User = new User();
+  newSavedAddress: SavedAddress = new SavedAddress();
+
 
 
   constructor(
@@ -19,6 +25,7 @@ export class UserProfile {
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private auth: AuthService,
+    private savedAddressService: SavedAddressService,
   ){}
 
   ngOnInit(): void {
@@ -49,6 +56,24 @@ export class UserProfile {
     });
 
   }
+
+  submitForm(newSavedAddress: SavedAddress) {
+     console.log('Submitting:', this.newSavedAddress);
+        this.savedAddressService.create(newSavedAddress).subscribe({
+          next: (response) => {
+            console.log('Success:', response);
+            this.newSavedAddress = new SavedAddress();
+            if (this.auth.checkLogin()) {
+              this.getLoggedInUser()
+            } else {
+              this.displayDetails(this.user.id);
+            }
+          },
+          error: (err) => {
+            console.error('Error submitting:', err);
+          }
+        });
+}
 
   displayDetails(userId: number): void{
     this.userService.show(userId).subscribe({

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.fuel4less.entities.Address;
-import com.skilldistillery.fuel4less.services.AddressService;
+import com.skilldistillery.fuel4less.entities.SavedAddress;
+import com.skilldistillery.fuel4less.services.SavedAddressService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,18 +19,18 @@ import jakarta.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping("api")
 @CrossOrigin({"*", "http://localhost/"})
-public class AddressController {
+public class SavedAddressController {
 	
 	@Autowired
-	private AddressService addressService;
+	private SavedAddressService addressService;
 	
 	
-	@PostMapping("gasStations/{gasStationId}")
-    public Address create(Principal principal, HttpServletRequest req, HttpServletResponse res,@RequestBody Address address, @RequestBody int addressId) {
-		address  = addressService.createAddress(principal.getName(), address);
+	@PostMapping("savedAddresses")
+    public SavedAddress create(Principal principal, HttpServletRequest req, HttpServletResponse res,@RequestBody SavedAddress savedAddress) {
+		savedAddress  = addressService.createSavedAddress(principal.getName(), savedAddress);
 		try {
-			if (address != null) {
-				res.setHeader("Location", req.getRequestURL().append("/").append(address.getId()).toString());
+			if (savedAddress != null) {
+				res.setHeader("Location", req.getRequestURL().append("/").append(savedAddress.getId()).toString());
 				res.setStatus(HttpServletResponse.SC_CREATED);
 			} else {
 				res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -39,7 +39,7 @@ public class AddressController {
 			res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			e.printStackTrace();
 		}
-        return address;
+        return savedAddress;
     }
 	
 	

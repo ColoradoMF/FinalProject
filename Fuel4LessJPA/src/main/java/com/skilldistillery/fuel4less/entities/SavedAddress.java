@@ -1,6 +1,7 @@
 package com.skilldistillery.fuel4less.entities;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -31,7 +32,6 @@ public class SavedAddress{
 	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	@MapsId(value="userId")
@@ -115,6 +115,24 @@ public class SavedAddress{
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SavedAddress other = (SavedAddress) obj;
+		return Objects.equals(id, other.id);
 	}
 
 	@Override
