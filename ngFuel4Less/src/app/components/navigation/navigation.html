@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-sm bg-body-tertiary sticky-top">
   <div class="container-fluid">
-    <img src="https://i.ibb.co/W4GLyqK2/image.png" class="nav-link" width="75" [routerLink]="['/home']">
-    <a class="navbar-brand"></a>
+    <a class="navbar-brand" [routerLink]="['/home']">
+      <img src="https://i.ibb.co/W4GLyqK2/image.png" width="75" alt="Logo" />
+    </a>
+
     <button
       class="navbar-toggler"
       type="button"
@@ -15,6 +17,7 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div
       class="collapse navbar-collapse"
       id="navbarSupportedContent"
@@ -22,12 +25,7 @@
     >
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            [routerLink]="['/about']"
-            >About Us</a
-          >
+          <a class="nav-link active" [routerLink]="['/about']">About Us</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/contact']">Contact Us</a>
@@ -37,27 +35,28 @@
             <a class="nav-link" [routerLink]="['/profile']">My Profile</a>
           </li>
         }
-        <li class="nav-item">
-          <form>
-            <input type="text" name="searchTerm" [(ngModel)]="searchTerm" />
-            <!-- <button (click)="loadSearchResults()">Search</button> -->
-          </form>
-          <a
-            class="nav-link btn btn-primary"
-            [routerLink]="['/search/' + searchTerm]"
-            >Search</a
-          >
-        </li>
-        @if(! loggedIn()){
-        <li class="nav-item">
-          <app-login></app-login>
-          <!-- <a class="nav-link" [routerLink]="['/login']">Login</a> -->
-        </li>
-        } @if(loggedIn()){
-        <li class="nav-item">
-          <app-logout></app-logout>
-        </li>
+        @if (!loggedIn()) {
+          <li class="nav-item">
+            <app-login></app-login>
+          </li>
+        } @else {
+          <li class="nav-item">
+            <app-logout></app-logout>
+          </li>
         }
+        <li class="nav-item d-flex align-items-center">
+          <form class="d-flex" (submit)="navigateToSearch()">
+            <input
+              class="form-control me-2"
+              type="search"
+              name="searchTerm"
+              [(ngModel)]="searchTerm"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+          </form>
+        </li>
       </ul>
     </div>
   </div>

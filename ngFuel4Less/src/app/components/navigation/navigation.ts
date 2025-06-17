@@ -35,4 +35,10 @@ export class Navigation {
     return this.auth.checkLogin();
 }
 
+navigateToSearch(): void {
+  if (this.searchTerm?.trim()) {
+    this.router.navigate(['/search', this.searchTerm.trim()]);
+  }
+}
+
 }

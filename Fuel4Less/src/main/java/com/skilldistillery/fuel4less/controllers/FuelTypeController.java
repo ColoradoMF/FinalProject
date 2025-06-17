@@ -1,6 +1,7 @@
 package com.skilldistillery.fuel4less.controllers;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,7 +24,7 @@ public class FuelTypeController {
 	@Autowired
 	FuelTypeService fuelTypeService;
 	
-	@GetMapping("fuelType/{fuelTypeId}")
+	@GetMapping("fuelTypes/{fuelTypeId}")
 	public FuelType getRecentPriceReport(Principal principal,
 			HttpServletRequest req,
 			HttpServletResponse res,
@@ -32,9 +33,18 @@ public class FuelTypeController {
 			if(fuelType == null) {
 				res.setStatus(HttpServletResponse.SC_NOT_FOUND);
 			}
-		
 		return fuelType;
-		
+	}
+	
+	@GetMapping({"fuelTypes", "fuelTypes/"})
+	public List<FuelType> findAllFuelTypes(Principal principal,
+			HttpServletRequest req,
+			HttpServletResponse res) {
+		List<FuelType> fuelTypes = fuelTypeService.findAll();
+		if (fuelTypes.size() == 0) {
+			res.setStatus(HttpServletResponse.SC_NOT_FOUND);
+		}
+		return fuelTypes;
 	}
 
 }
