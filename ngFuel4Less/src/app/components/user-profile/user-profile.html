@@ -1,74 +1,3 @@
-<!-- <div class="container" name="profileInfo">
-  <h1>Hello, {{user.firstName}}</h1>
-  <img [src]="user.imageUrl" alt="" />
-  <ul>
-    <li>
-      Name: {{user.firstName}} {{user.lastName}}
-    </li>
-    <li>
-      Email: {{user.email}}
-    </li>
-    <li>
-      Biography: {{user.biography}}
-    </li>
-  </ul>
-</div>
-<div name="savedAddresses" class="container-fluid" style="display: flex;">
-  <hr>
-<table class="table table-hover" style="width: 50%;">
-  <thead class="table-dark">
-    <tr>
-      <th>Address Name</th>
-      <th>Address Details</th>
-      <th>Search</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (savedAddress of user.savedAddresses; track $index) {
-      <tr>
-        <td>{{savedAddress.name}}</td>
-        <td>{{savedAddress.address.street}}, {{savedAddress.address.street2}},
-          {{savedAddress.address.city}}, {{savedAddress.address.state}},
-          {{savedAddress.address.zipCode}}</td>
-          <td> <a
-            class="btn btn-success"
-            [routerLink]="['/search/' + savedAddress.address.zipCode]"
-            >Search</a
-          ></td>
-      </tr>
-    }
-
-  </tbody>
-</table>
-<hr>
-<form style="width: 50%; margin-left: 100px;" #formRef="ngForm" (ngSubmit)="submitForm(newSavedAddress)" name="newSavedAddressForm">
-  <label for="name">Address Label: </label>
-  <input type="text" name="name" [(ngModel)]="newSavedAddress.name" class="form-control w-25" required>
-
-  <label for="street">Street: </label>
-  <input type="text" name="street" [(ngModel)]="newSavedAddress.address.street" class="form-control w-25">
-
-  <label for="street2">Street 2: </label>
-  <input type="text" name="street2" [(ngModel)]="newSavedAddress.address.street2" class="form-control w-25">
-
-  <label for="city">City: </label>
-  <input type="text" name="city" [(ngModel)]="newSavedAddress.address.city" class="form-control w-25">
-
-  <label for="state">State: </label>
-  <input type="text" name="state" [(ngModel)]="newSavedAddress.address.state" maxlength="2" class="form-control w-25">
-
-  <label for="zipCode">Zip Code: </label>
-  <input type="text" name="zipCode" [(ngModel)]="newSavedAddress.address.zipCode" minlength="5" maxlength="5" class="form-control w-25" required>
-
-  <button class="btn btn-danger mt-3" [disabled]="!formRef.form.valid">Add New Address</button>
-</form>
-<br>
-<br>
-<br>
-
-</div> -->
-
-
 <div class="container mt-5" name="profileInfo">
   <div class="card shadow p-4">
     <h1 class="mb-4">Hello, {{ user.firstName }}</h1>
@@ -103,6 +32,7 @@
                 <th>Label</th>
                 <th>Details</th>
                 <th>Search</th>
+                <th class="d-flex justify-content-center">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -117,6 +47,11 @@
                   <td>
                     <a class="btn btn-success btn-sm"
                       [routerLink]="['/search/' + savedAddress.address.zipCode]">Search</a>
+                  </td>
+
+                  <td class="d-flex justify-content-center gap-2">
+                    <a class="btn btn-warning btn-sm">Update</a>
+                    <a class="btn btn-danger btn-sm">Delete</a>
                   </td>
                 </tr>
               }

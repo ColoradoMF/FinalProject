@@ -8,6 +8,7 @@ import { Fueltype } from '../../models/fueltype';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FuelTypeService } from '../../services/fuel-type-service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-gas-station-details',
@@ -27,6 +28,7 @@ export class GasStationDetails implements OnInit{
     private activatedRoute: ActivatedRoute,
     private priceReportService: PriceReportService,
     private fuelTypeService: FuelTypeService,
+    private sanitizer: DomSanitizer,
   ){
 
   }
@@ -108,9 +110,10 @@ export class GasStationDetails implements OnInit{
     })
   }
 
-  get mapUrl(): string {
+  get mapUrl(): SafeResourceUrl {
   const address = `${this.gasStation.address.street}, ${this.gasStation.address.city}, ${this.gasStation.address.state} ${this.gasStation.address.zipCode}`;
-  return `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+  const url = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+  return this.sanitizer.bypassSecurityTrustResourceUrl(url);
 }
 
 }
