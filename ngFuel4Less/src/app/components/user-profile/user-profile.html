@@ -33,6 +33,15 @@
 </div>
 } @else if (updateProfile) {
 <!-- TODO // Add form to update user profile -->
+<form>
+  <hr>
+  <input type="text" name="firstName" class="form-control w-25" [(ngModel)]="updatedUser.firstName" value="{{user.lastName}}"><br>
+  <input type="text" name="lastName" class="form-control w-25" [(ngModel)]="updatedUser.lastName" value="{{user.lastName}}"><br>
+  <input type="text" name="email" class="form-control w-25" [(ngModel)]="updatedUser.email" value="{{user.email}}"><br>
+  <textarea name="biography" cols="40" rows="4" [(ngModel)]="updatedUser.biography" value="{{user.biography}}"></textarea><br>
+  <button class="btn btn-primary">Update</button>
+  <hr>
+ </form>
 }
 
 <!-- Saved Addresses and Form -->
@@ -78,7 +87,7 @@
                 </td>
 
                 <td class="d-flex justify-content-center gap-2">
-                  <a class="btn btn-warning btn-sm">Update</a>
+                  <!-- <a class="btn btn-warning btn-sm">Update</a> -->
                   <a class="btn btn-danger btn-sm">Delete</a>
                 </td>
               </tr>
