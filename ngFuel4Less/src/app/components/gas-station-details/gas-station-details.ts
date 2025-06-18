@@ -25,6 +25,7 @@ export class GasStationDetails implements OnInit{
   fuelTypes: Fueltype[] = [];
   newPriceReport: PriceReport = new PriceReport();
   user: User = new User();
+  hoveringFavorite: boolean = false;
 
   constructor(
     private gasStationService: GasStationService,

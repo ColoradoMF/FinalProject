@@ -40,7 +40,18 @@
   <div class="mb-3 text-center">
     <h1 class="fw-bold">{{ gasStation.name }}
       @if (isUserFavorite()) {
-        <i class="bi bi-heart-fill" (click)="removeFromFavorites(gasStation.id)"></i>
+        <!-- <i class="bi bi-heart-fill" (click)="removeFromFavorites(gasStation.id)"></i> -->
+         <i
+  class="bi"
+  [ngClass]="{
+    'bi-heart-fill': isUserFavorite() && !hoveringFavorite,
+    'bi-heartbreak': isUserFavorite() && hoveringFavorite
+  }"
+  (mouseenter)="hoveringFavorite = true"
+  (mouseleave)="hoveringFavorite = false"
+  (click)="removeFromFavorites(gasStation.id)"
+  style="cursor: pointer;"
+></i>
       } @else {
         <i class="bi bi-heart" (click)="addToFavorites(gasStation.id)"></i>
       }
