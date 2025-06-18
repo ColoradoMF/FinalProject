@@ -4,6 +4,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { SavedAddress } from '../models/saved-address';
 import { AuthService } from './auth-service';
 import { environment } from '../../environments/environment';
+import { SavedAddressId } from '../models/saved-address-id';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,17 @@ private url = environment.baseUrl + 'api/savedAddresses';
           console.log(err);
           return throwError(
             () => new Error('SavedAddressService.index(): error creating SavedAddress: ' + err)
+          );
+        })
+      );
+    }
+
+    delete(addressId: number): Observable<void>{
+      return this.http.delete<void>(this.url + "/" + addressId, this.getHttpOptions()).pipe(
+        catchError((err: any) => {
+          console.log(err);
+          return throwError(
+            () => new Error('SavedAddressService.index(): error deleting SavedAddress: ' + err)
           );
         })
       );

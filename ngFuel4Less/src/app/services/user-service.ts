@@ -1,3 +1,4 @@
+import { SavedAddressId } from './../models/saved-address-id';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Observable, catchError, throwError } from 'rxjs';
@@ -61,11 +62,23 @@ index(): Observable<User[]> {
           return throwError(
             () =>
               new Error(
-                'UserService.index(): error retrieving User Profile: ' +
+                'UserService.show(): error retrieving User Profile: ' +
                   err
               )
           );
         })
       );
+   }
+
+   destroy(addressId: number): Observable<void> {
+    return this.http.delete<void>(this.url + "/savedAddresses/" + addressId).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('UserService.destroy(): error deleting saved address:' + err)
+        )
+      })
+    );
    }
 }
