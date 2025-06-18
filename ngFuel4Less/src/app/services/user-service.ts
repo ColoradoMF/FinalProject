@@ -9,17 +9,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  updateUser(username: any, id: any, updatedUser: User) {
-    throw new Error('Method not implemented.');
-  }
   private url = environment.baseUrl + 'api/users';
+  private profileUrl = environment.baseUrl + 'api/profile';
 
   constructor(
     private auth: AuthService,
     private http: HttpClient,
   ) { }
 
-   getHttpOptions() {
+  getHttpOptions() {
     let options = {
       headers: {
         Authorization: 'Basic ' + this.auth.getCredentials(),
@@ -27,6 +25,18 @@ export class UserService {
       },
     };
     return options;
+  }
+  updateUser(user: User): Observable<User> {
+    return this.http.put<User>(this.profileUrl, user, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+              'UserService.updateUser(): error updating User: ' + err
+            )
+          )
+      })
+    )
   }
 
 index(): Observable<User[]> {

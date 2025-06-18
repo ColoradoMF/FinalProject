@@ -1,45 +1,53 @@
-@if (!updateProfile) {
+@if (!editUser) {
 <div class="container mt-5" name="profileInfo">
   <div class="card shadow p-4">
 <div class="d-flex justify-content-between align-items-center mb-4">
   <h1 class="mb-0">Hello, {{ user.firstName }}</h1>
-  <button class="btn btn-outline-warning" (click)="updateProfile = true">Update Profile</button>
+  @if(loggedIn()){
+    <button class="btn btn-outline-warning" (click)="gotoUpdate()">Update Profile</button>
+  }
 </div>
 
-  <div class="row g-4 align-items-center">
-    <div class="col-md-3 text-center">
-      <img
-      [src]="user.imageUrl"
-      alt="Profile Image"
-      class="img-thumbnail"
-      style="max-width: 100%"
-      />
-    </div>
-    <div class="col-md-9">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}
-        </li>
-        <li class="list-group-item">
-          <strong>Email:</strong> {{ user.email }}
-        </li>
-        <li class="list-group-item">
-          <strong>Biography:</strong> {{ user.biography }}
-        </li>
-      </ul>
-    </div>
+<div class="row g-4 align-items-center">
+  <div class="col-md-3 text-center">
+    <img
+    [src]="user.imageUrl"
+    alt="Profile Image"
+    class="img-thumbnail"
+    style="max-width: 100%"
+    />
+  </div>
+  <div class="col-md-9">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}
+      </li>
+      <li class="list-group-item">
+        <strong>Email:</strong> {{ user.email }}
+      </li>
+      <li class="list-group-item">
+        <strong>Biography:</strong> {{ user.biography }}
+      </li>
+    </ul>
   </div>
 </div>
 </div>
-} @else if (updateProfile) {
-<!-- TODO // Add form to update user profile -->
-<form>
-  <hr>
-  <input type="text" name="firstName" class="form-control w-25" [(ngModel)]="updatedUser.firstName" value="{{user.lastName}}"><br>
-  <input type="text" name="lastName" class="form-control w-25" [(ngModel)]="updatedUser.lastName" value="{{user.lastName}}"><br>
-  <input type="text" name="email" class="form-control w-25" [(ngModel)]="updatedUser.email" value="{{user.email}}"><br>
-  <textarea name="biography" cols="40" rows="4" [(ngModel)]="updatedUser.biography" value="{{user.biography}}"></textarea><br>
-  <button class="btn btn-primary">Update</button>
+</div>
+} @else if (editUser){
+  <form
+      (ngSubmit)="updateForm(editUser)"
+      >
+    <hr>
+    <label for="firstName">First Name</label>
+    <input type="text" name="firstName" class="form-control w-25" [(ngModel)]="editUser.firstName"><br>
+    <label for="lastName">Last Name</label>
+    <input type="text" name="lastName" class="form-control w-25" [(ngModel)]="editUser.lastName"><br>
+    <label for="email">Email</label>
+    <input type="text" name="email" class="form-control w-25" [(ngModel)]="editUser.email"><br>
+    <label for="biography">Biography</label><br>
+    <textarea name="biography" cols="40" rows="4" [(ngModel)]="editUser.biography"></textarea><br>
+    <button class="btn btn-primary">Update</button>
+    <button class="btn btn-outline-danger" (click)="editUser = null">Cancel</button>
   <hr>
  </form>
 }
