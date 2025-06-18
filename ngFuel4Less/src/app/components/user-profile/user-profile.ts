@@ -15,9 +15,14 @@ import { GasStationService } from '../../services/gas-station-service';
   styleUrl: './user-profile.css'
 })
 export class UserProfile {
+submitUserUpdate(arg0: number) {
+throw new Error('Method not implemented.');
+}
 
   user: User = new User();
   newSavedAddress: SavedAddress = new SavedAddress();
+  updateProfile: boolean = false;
+  updatedUser: User = new User();
 
 
 
@@ -48,6 +53,8 @@ export class UserProfile {
       }
     })
   }
+
+
 
   findByZipCode(zipCode: string) {
     this.gasStationService.searchByZip(zipCode);

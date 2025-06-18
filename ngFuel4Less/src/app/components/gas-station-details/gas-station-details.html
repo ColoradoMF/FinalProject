@@ -37,7 +37,7 @@
                   [(ngModel)]="newPriceReport.pricePerGallon"
                   class="form-control form-control-sm"
                   style="width: 100px;"
-                  required value=""
+                  required
                 />
         <button class="btn btn-primary" [disabled]="newPriceReport.fuelType.id === 0">Submit</button>
       </form>
@@ -68,15 +68,6 @@
         </tr>
       </thead>
       <tbody>
-        @if (recentPriceReports.length === 0) {
-          <form>
-            <select name="fuelType">
-              <!-- @for (fuelType of items; track $index) {
-                <option value="{{fuelType.id}}">{{fuelType.name}}</option>
-              } -->
-            </select>
-          </form>
-        }
         @for (priceReport of recentPriceReports; track priceReport.id) {
           <tr>
             <td>{{ priceReport.fuelType.name }}</td>

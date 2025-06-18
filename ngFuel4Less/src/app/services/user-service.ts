@@ -9,6 +9,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
+  updateUser(username: any, id: any, updatedUser: User) {
+    throw new Error('Method not implemented.');
+  }
   private url = environment.baseUrl + 'api/users';
 
   constructor(
