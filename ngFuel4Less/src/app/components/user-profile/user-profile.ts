@@ -1,3 +1,4 @@
+import { SavedAddressId } from './../../models/saved-address-id';
 import { SavedAddressService } from './../../services/saved-address-service';
 import { Component } from '@angular/core';
 import { User } from '../../models/user';
@@ -125,5 +126,18 @@ throw new Error('Method not implemented.');
           }
         });
 }
+  deleteSavedAddress(addressId: number){
+    this.savedAddressService.delete(addressId).subscribe({
+      next: (response) => {
+        console.log('Deleted', response);
+        this.displayDetails(this.user.id);
+      },
+      error: (err) => {
+        console.error('Error deleting saved address:' ,err);
+        console.error(err);
+      }
+    });
+    this.displayDetails(this.user.id);
+  }
 
 }
