@@ -26,6 +26,7 @@ export class GasStationDetails implements OnInit{
   newPriceReport: PriceReport = new PriceReport();
   user: User = new User();
   hoveringFavorite: boolean = false;
+  newReportPricePerGallon: string = '';
 
   constructor(
     private gasStationService: GasStationService,
@@ -109,7 +110,7 @@ export class GasStationDetails implements OnInit{
 
   submitPriceReport(priceReport: PriceReport) {
       priceReport.gasStation = this.gasStation;
-
+      priceReport.pricePerGallon = parseFloat(this.newReportPricePerGallon);
     this.priceReportService.createPriceReport(priceReport).subscribe({
       next: (createdReport) => {
         console.log(createdReport);
