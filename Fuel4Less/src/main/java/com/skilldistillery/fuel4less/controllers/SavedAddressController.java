@@ -45,13 +45,15 @@ public class SavedAddressController {
         return savedAddress;
     }
 	
-	@DeleteMapping("savedAddresses/{savedAddressId}")
-	public void destroy(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable("savedAddressId") SavedAddressId id) {
-		boolean result = savedAddressService.deleteSavedAddress(principal.getName(), id);
+	@DeleteMapping("savedAddresses/{addressId}")
+	public void destroy(Principal principal, HttpServletResponse res, @PathVariable("addressId") int addressId) {
+		boolean result = savedAddressService.deleteSavedAddress(principal.getName(), addressId);
         if (result) {
         	res.setStatus(HttpServletResponse.SC_NO_CONTENT); //204
+        
         } else {
         	res.setStatus(HttpServletResponse.SC_NOT_FOUND); //404
+     
         }
 	}
 	

@@ -26,8 +26,8 @@ public class SavedAddressServiceImpl implements SavedAddressService {
 
 	@Override
 	public SavedAddress createSavedAddress(String username, SavedAddress newSavedAddress) {
-		User user = userRepo.findByUsername(username);
 		Address address = addressRepo.saveAndFlush(newSavedAddress.getAddress());
+		User user = userRepo.findByUsername(username);
 		if (user != null && address != null) {
 			SavedAddressId id = new SavedAddressId(user.getId(), address.getId());
 			newSavedAddress.setId(id);
@@ -41,11 +41,14 @@ public class SavedAddressServiceImpl implements SavedAddressService {
 	}
 
 	@Override
-	public boolean deleteSavedAddress(String username, SavedAddressId savedAddressId) {
+	public boolean deleteSavedAddress(String username, int addressId) {
 		boolean deleted = false;
-		SavedAddress savedAddressToDestroy = savedAddressRepo.findById(savedAddressId).orElse(null);
+		User user = userRepo.findByUsername(username);
+		SavedAddressId id = new SavedAddressId(user.getId(), addressId);
+		SavedAddress savedAddressToDestroy = savedAddressRepo.findById(id).orElse(null);
 		if ( savedAddressToDestroy != null ) {
 			savedAddressRepo.delete(savedAddressToDestroy);
+			addressRepo.deleteById(addressId);
 			deleted = true;
 		}
 		return deleted;

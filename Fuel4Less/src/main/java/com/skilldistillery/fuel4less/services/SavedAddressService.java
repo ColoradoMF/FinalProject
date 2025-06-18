@@ -9,6 +9,6 @@ import com.skilldistillery.fuel4less.entities.SavedAddressId;
 public interface SavedAddressService {
 	
 	SavedAddress createSavedAddress(String username, SavedAddress newSavedAddress);
-	boolean deleteSavedAddress(String username, SavedAddressId destroySavedAddressId);
+	boolean deleteSavedAddress(String username, int addressId);
 
 }
