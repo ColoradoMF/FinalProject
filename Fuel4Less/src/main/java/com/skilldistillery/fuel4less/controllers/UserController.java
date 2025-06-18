@@ -38,10 +38,10 @@ public class UserController {
 		return user;
 	}
 	
-	@PutMapping("user/{userId}")
-	public User update(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable("userId") int userId, @RequestBody User user) {
+	@PutMapping("profile")
+	public User update(Principal principal, HttpServletRequest req, HttpServletResponse res, @RequestBody User user) {
 		try {
-			user = userService.updateUser(principal.getName(), userId, user);
+			user = userService.updateUser(principal.getName(), user);
 			if (user == null) {
 				res.setStatus(HttpServletResponse.SC_NOT_FOUND);
 			}

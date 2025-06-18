@@ -22,7 +22,7 @@ throw new Error('Method not implemented.');
   user: User = new User();
   newSavedAddress: SavedAddress = new SavedAddress();
   updateProfile: boolean = false;
-  updatedUser: User = new User();
+  editUser: User | null = null;
 
 
 
@@ -49,11 +49,13 @@ throw new Error('Method not implemented.');
         } else {
           this.getLoggedInUser();
         }
-
       }
     })
   }
 
+  loggedIn(): boolean{
+    return this.auth.checkLogin();
+  }
 
 
   findByZipCode(zipCode: string) {
@@ -100,5 +102,28 @@ throw new Error('Method not implemented.');
         }
       })
     }
+
+    gotoUpdate(){
+      this.editUser = {...this.user};
+
+    }
+  updateForm(updatedUser: User) {
+     console.log('Submitting:', updatedUser);
+        this.userService.updateUser(updatedUser).subscribe({
+          next: (response) => {
+            console.log('Success:', response);
+            updatedUser = new User();
+            this.editUser = null;
+            // if (this.auth.checkLogin()) {
+            this.getLoggedInUser()
+            // } else {
+            //   this.displayDetails(this.user.id);
+            // }
+          },
+          error: (err) => {
+            console.error('Error submitting:', err);
+          }
+        });
+}
 
 }
