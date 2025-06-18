@@ -31,7 +31,7 @@
           <td>
             @for (report of recentPriceReportsMap.get(gasStation.id) ?? [];
             track report.id) {
-            <div>{{ report.fuelType.name }}: ${{ report.pricePerGallon }}</div>
+            <div>{{ report.fuelType.name }}: ${{ report.pricePerGallon | number:'1.2-2' }}</div>
             }
           </td>
         </tr>

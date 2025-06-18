@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
 			existUser.setEmail(updatedUser.getEmail());
 			existUser.setFirstName(updatedUser.getFirstName());
 			existUser.setLastName(updatedUser.getLastName());
+			existUser.setImageUrl(updatedUser.getImageUrl());
 			return userRepo.saveAndFlush(existUser);
 		}
 		return null;

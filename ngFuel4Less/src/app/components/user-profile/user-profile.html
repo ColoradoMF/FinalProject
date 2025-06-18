@@ -10,12 +10,22 @@
 
 <div class="row g-4 align-items-center">
   <div class="col-md-3 text-center">
-    <img
-    [src]="user.imageUrl"
-    alt="Profile Image"
-    class="img-thumbnail"
-    style="max-width: 100%"
-    />
+    @if (user.imageUrl !== "" && user.imageUrl !== null) {
+      <img
+      [src]="user.imageUrl"
+      alt="Profile Image"
+      class="img-thumbnail"
+      style="max-width: 100%"
+      />
+    } @else {
+      <img
+      src="https://static-00.iconduck.com/assets.00/profile-default-icon-2048x2045-u3j7s5nj.png"
+      alt="Profile Image"
+      class="img-thumbnail"
+      style="max-width: 100%"
+      />
+
+    }
   </div>
   <div class="col-md-9">
     <ul class="list-group list-group-flush">
@@ -45,6 +55,8 @@
     <input type="text" name="lastName" class="form-control w-25" [(ngModel)]="editUser.lastName"><br>
     <label for="email">Email</label>
     <input type="text" name="email" class="form-control w-25" [(ngModel)]="editUser.email"><br>
+    <label for="imageUrl">Image Url</label>
+    <input type="text" name="imageUrl" class="form-control w-25" [(ngModel)]="editUser.imageUrl"><br>
     <label for="biography">Biography</label><br>
     <textarea name="biography" cols="40" rows="4" [(ngModel)]="editUser.biography"></textarea><br>
     <button class="btn btn-primary">Update</button>

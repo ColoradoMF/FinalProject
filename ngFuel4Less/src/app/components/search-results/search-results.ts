@@ -4,10 +4,11 @@ import { GasStationService } from '../../services/gas-station-service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { PriceReport } from '../../models/price-report';
 import { PriceReportService } from '../../services/price-report-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-search-results',
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './search-results.html',
   styleUrl: './search-results.css'
 })
