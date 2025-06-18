@@ -1,6 +1,7 @@
 package com.skilldistillery.fuel4less.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -44,7 +45,7 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<SavedAddress> savedAddresses;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties({"users", "priceReports"})
 	@ManyToMany
 	@JoinTable(name = "user_has_favorite_gas_stations",
 	joinColumns=@JoinColumn(name = "user_id"),
@@ -188,6 +189,23 @@ public class User {
 	public void setFavoriteGasStations(List<GasStation> favoriteGasStations) {
 		this.favoriteGasStations = favoriteGasStations;
 	}
+	
+	public void addFavoriteGasStation(GasStation gasStation) {
+		if (favoriteGasStations == null) {
+			favoriteGasStations = new ArrayList<>();
+		}
+		if (! favoriteGasStations.contains(gasStation) ) {
+			favoriteGasStations.add(gasStation);
+			gasStation.addUser(this);
+		}
+	}
+	
+	public void removeFavoriteGasStation(GasStation gasStation) {
+		if ( favoriteGasStations != null && favoriteGasStations.contains(gasStation)) {
+			favoriteGasStations.remove(gasStation);
+			gasStation.removeUser(this);
+		}
+	}
 
 	public List<PriceReport> getPriceReports() {
 		return priceReports;
@@ -204,6 +222,8 @@ public class User {
 	public void setGasStationReviews(List<GasStationReview> gasStationReview) {
 		this.gasStationReviews = gasStationReview;
 	}
+	
+	
 
 	//hashCode and equals
 	@Override

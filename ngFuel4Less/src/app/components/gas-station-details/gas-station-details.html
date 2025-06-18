@@ -1,13 +1,4 @@
-<div class="container mt-4">
-  <div class="ratio ratio-16x9 mb-4 rounded shadow">
-    <iframe
-      [src]="mapUrl"
-      allowfullscreen
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
-  </div>
-</div>
+
 
 <!-- Gas Station Image -->
 <div class="container mt-4">
@@ -21,6 +12,7 @@
       alt="{{gasStation.name}} Image"
       />
     </div>
+    <!-- New Price Report Form -->
     <div class="col-sm-4">
       <h3>New Price Report</h3>
       <form (ngSubmit)="submitPriceReport(newPriceReport)" >
@@ -31,14 +23,14 @@
           }
         </select>
         <input
-                  type="text"
-                  name="pricePerGallon"
-                  placeholder="$ -.--"
-                  [(ngModel)]="newPriceReport.pricePerGallon"
-                  class="form-control form-control-sm"
-                  style="width: 100px;"
-                  required
-                />
+        type="text"
+        name="pricePerGallon"
+        placeholder="$ -.--"
+        [(ngModel)]="newPriceReport.pricePerGallon"
+        class="form-control form-control-sm"
+        style="width: 100px;"
+        required
+        />
         <button class="btn btn-primary" [disabled]="newPriceReport.fuelType.id === 0">Submit</button>
       </form>
     </div>
@@ -46,7 +38,13 @@
 
   <!-- Gas Station Info -->
   <div class="mb-3 text-center">
-    <h1 class="fw-bold">{{ gasStation.name }}</h1>
+    <h1 class="fw-bold">{{ gasStation.name }}
+      @if (isUserFavorite()) {
+        <i class="bi bi-heart-fill" (click)="removeFromFavorites(gasStation.id)"></i>
+      } @else {
+        <i class="bi bi-heart" (click)="addToFavorites(gasStation.id)"></i>
+      }
+</h1>
     <p class="mb-0">{{ gasStation.address.street }}</p>
     <p class="mb-0" *ngIf="gasStation.address.street2">{{ gasStation.address.street2 }}</p>
     <p>{{ gasStation.address.city }}, {{ gasStation.address.state }} {{ gasStation.address.zipCode }}</p>
@@ -74,32 +72,40 @@
             <td>${{ priceReport.pricePerGallon }}</td>
             <td>
               <form
-                #newReportForm="ngForm"
-                (ngSubmit)="createPriceReport(newReportForm.value)"
-                class="d-flex flex-column flex-md-row align-items-center gap-2"
+              #newReportForm="ngForm"
+              (ngSubmit)="createPriceReport(newReportForm.value)"
+              class="d-flex flex-column flex-md-row align-items-center gap-2"
               >
-                <input
-                  type="text"
-                  name="pricePerGallon"
-                  placeholder="$ -.--"
-                  [ngModel]="priceReport.pricePerGallon"
-                  class="form-control form-control-sm"
-                  style="width: 100px;"
-                />
-                <input type="hidden" name="fuelTypeId" [ngModel]="priceReport.fuelType.id" />
-                <input type="hidden" name="gasStationId" [ngModel]="priceReport.gasStation.id" />
-                <button type="submit" class="btn btn-sm btn-warning">Update</button>
-              </form>
-            </td>
-            <td>
-              <span class="text-muted">
-                {{ priceReport.lastUpdate }}<br />
-                <small>by {{ priceReport.user.username }}</small>
-              </span>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
-  </div>
+              <input
+              type="text"
+              name="pricePerGallon"
+              placeholder="$ -.--"
+              [ngModel]="priceReport.pricePerGallon"
+              class="form-control form-control-sm"
+              style="width: 100px;"
+              />
+              <input type="hidden" name="fuelTypeId" [ngModel]="priceReport.fuelType.id" />
+              <input type="hidden" name="gasStationId" [ngModel]="priceReport.gasStation.id" />
+              <button type="submit" class="btn btn-sm btn-warning">Update</button>
+            </form>
+          </td>
+          <td>
+            <span class="text-muted">
+              {{ priceReport.lastUpdate }}<br />
+              <small>by {{ priceReport.user.username }}</small>
+            </span>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+<div class="container mt-4" style="display: flex; justify-content: center; align-items: center;">
+<iframe style="width: 500px; height: 500px;"
+  [src]="mapUrl"
+  allowfullscreen
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+></iframe>
+</div>
 </div>

@@ -9,6 +9,9 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FuelTypeService } from '../../services/fuel-type-service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { UserService } from '../../services/user-service';
+import { User } from '../../models/user';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-gas-station-details',
@@ -21,14 +24,17 @@ export class GasStationDetails implements OnInit{
   recentPriceReports: PriceReport[] = [];
   fuelTypes: Fueltype[] = [];
   newPriceReport: PriceReport = new PriceReport();
+  user: User = new User();
 
   constructor(
     private gasStationService: GasStationService,
+    private userService: UserService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private priceReportService: PriceReportService,
     private fuelTypeService: FuelTypeService,
     private sanitizer: DomSanitizer,
+    private auth: AuthService,
   ){
 
   }
@@ -41,6 +47,7 @@ export class GasStationDetails implements OnInit{
           if(isNaN(gasStationId)){
             this.router.navigateByUrl("notFound");
           }else {
+            this.getLoggedInUser();
             this.displayDetails(gasStationId);
           }
         }
@@ -110,10 +117,45 @@ export class GasStationDetails implements OnInit{
     })
   }
 
+  addToFavorites(gasStationId: number) {
+      this.userService.addFavoriteGasStation(gasStationId).subscribe({
+      next: () => {
+        this.displayDetails(gasStationId);
+        this.getLoggedInUser();
+      }
+    })
+  }
+
+  removeFromFavorites(gasStationId: number) {
+    this.userService.removeFavoriteGasStation(gasStationId).subscribe({
+      next: () => {
+        this.displayDetails(gasStationId);
+        this.getLoggedInUser();
+      }
+    })
+  }
+
   get mapUrl(): SafeResourceUrl {
   const address = `${this.gasStation.address.street}, ${this.gasStation.address.city}, ${this.gasStation.address.state} ${this.gasStation.address.zipCode}`;
   const url = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
   return this.sanitizer.bypassSecurityTrustResourceUrl(url);
 }
+
+isUserFavorite(): boolean {
+
+  return this.user.favoriteGasStations.some(
+     (station) => {return station.id === this.gasStation.id}
+  );
+}
+
+getLoggedInUser() {
+   this.auth.getLoggedInUser().subscribe({
+      next: (user) => {
+       this.user = user;
+
+      }
+    });
+
+  }
 
 }
