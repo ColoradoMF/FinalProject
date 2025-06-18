@@ -25,11 +25,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User updateUser(int id, User updatedUser) {
+	public User updateUser(String username, int id, User updatedUser) {
+		User user = userRepo.findByUsername(username);
 		User existUser = userRepo.findById(id).orElse(null);
-		if(existUser != null) {
+		if(existUser != null && user != null && existUser.getId() == user.getId()) {
 			existUser.setUsername(updatedUser.getUsername());
 			existUser.setPassword(updatedUser.getPassword());
+			existUser.setBiography(updatedUser.getBiography());
+			existUser.setEmail(updatedUser.getEmail());
+			existUser.setFirstName(updatedUser.getFirstName());
+			existUser.setLastName(updatedUser.getLastName());
 			return userRepo.saveAndFlush(existUser);
 		}
 		return null;
