@@ -5,12 +5,15 @@ import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.fuel4less.entities.SavedAddress;
+import com.skilldistillery.fuel4less.entities.SavedAddressId;
 import com.skilldistillery.fuel4less.services.SavedAddressService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,12 +25,12 @@ import jakarta.servlet.http.HttpServletResponse;
 public class SavedAddressController {
 	
 	@Autowired
-	private SavedAddressService addressService;
+	private SavedAddressService savedAddressService;
 	
 	
 	@PostMapping("savedAddresses")
     public SavedAddress create(Principal principal, HttpServletRequest req, HttpServletResponse res,@RequestBody SavedAddress savedAddress) {
-		savedAddress  = addressService.createSavedAddress(principal.getName(), savedAddress);
+		savedAddress  = savedAddressService.createSavedAddress(principal.getName(), savedAddress);
 		try {
 			if (savedAddress != null) {
 				res.setHeader("Location", req.getRequestURL().append("/").append(savedAddress.getId()).toString());
@@ -41,6 +44,17 @@ public class SavedAddressController {
 		}
         return savedAddress;
     }
+	
+	@DeleteMapping("savedAddresses/{savedAddressId}")
+	public void destroy(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable("savedAddressId") SavedAddressId id) {
+		boolean result = savedAddressService.deleteSavedAddress(principal.getName(), id);
+        if (result) {
+        	res.setStatus(HttpServletResponse.SC_NO_CONTENT); //204
+        } else {
+        	res.setStatus(HttpServletResponse.SC_NOT_FOUND); //404
+        }
+	}
+	
 	
 	
 }

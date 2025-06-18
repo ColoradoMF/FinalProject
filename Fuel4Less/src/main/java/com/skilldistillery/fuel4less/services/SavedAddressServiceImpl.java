@@ -39,4 +39,15 @@ public class SavedAddressServiceImpl implements SavedAddressService {
 		}
 		return null;
 	}
+
+	@Override
+	public boolean deleteSavedAddress(String username, SavedAddressId savedAddressId) {
+		boolean deleted = false;
+		SavedAddress savedAddressToDestroy = savedAddressRepo.findById(savedAddressId).orElse(null);
+		if ( savedAddressToDestroy != null ) {
+			savedAddressRepo.delete(savedAddressToDestroy);
+			deleted = true;
+		}
+		return deleted;
+	}
 }
