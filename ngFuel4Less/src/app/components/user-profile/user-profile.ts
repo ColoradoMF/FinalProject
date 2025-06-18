@@ -8,10 +8,11 @@ import { AuthService } from '../../services/auth-service';
 import { FormsModule } from '@angular/forms';
 import { SavedAddress } from '../../models/saved-address';
 import { GasStationService } from '../../services/gas-station-service';
+import { FavoriteGasStations } from "../favorite-gas-stations/favorite-gas-stations";
 
 @Component({
   selector: 'app-user-profile',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, FavoriteGasStations],
   templateUrl: './user-profile.html',
   styleUrl: './user-profile.css'
 })
@@ -137,7 +138,14 @@ throw new Error('Method not implemented.');
         console.error(err);
       }
     });
-    this.displayDetails(this.user.id);
+  }
+
+  removeFromFavorites(gasStationId: number) {
+      this.userService.removeFavoriteGasStation(gasStationId).subscribe({
+      next: () => {
+      this.getLoggedInUser();
+      }
+    })
   }
 
 }

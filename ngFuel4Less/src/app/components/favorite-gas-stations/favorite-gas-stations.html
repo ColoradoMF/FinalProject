@@ -1,0 +1,27 @@
+<div>
+  <h3>Favorite Gas Stations</h3>
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Station Name</th>
+      <th>Station Address</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+  <tbody>
+   @for (gasStation of user?.favoriteGasStations; track $index) {
+    <tr>
+      <td>{{gasStation.name}}</td>
+      <td>{{gasStation.address.street}}
+        @if (gasStation.address.street2 != null && gasStation.address.street2 != "") {
+          , {{gasStation.address.street2}}
+        } <br>
+        {{gasStation.address.city}}, {{gasStation.address.state}} {{gasStation.address.zipCode}}
+      </td>
+      <td><button class="btn btn-primary" (click)="goToGasStation(gasStation.id)">Go to Gas Station</button>
+      <button class="btn btn-danger" (click)="removeFromFavorites(gasStation.id)">Delete Favorite</button></td>
+    </tr>
+   }
+  </tbody>
+</table>
+</div>

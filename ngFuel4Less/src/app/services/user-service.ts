@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
   private url = environment.baseUrl + 'api/users';
   private profileUrl = environment.baseUrl + 'api/profile';
+  private favoritesUrl = environment.baseUrl + 'api/favoriteStations';
 
   constructor(
     private auth: AuthService,
@@ -80,5 +81,30 @@ index(): Observable<User[]> {
         )
       })
     );
+  }
+
+  addFavoriteGasStation(gasStationId: number): Observable<void> {
+    return this.http.post<void>(this.favoritesUrl + "/" + gasStationId, null, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('UserService.addFavoriteGasStation(): error adding favorite gas station')
+        )
+      })
+    );
    }
+
+  removeFavoriteGasStation(gasStationId: number): Observable<void> {
+    return this.http.delete<void>(this.favoritesUrl + "/" + gasStationId, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('UserService.removeFavoriteGasStation(): error removing favorite gas station')
+        )
+      })
+    );
+   }
+
 }

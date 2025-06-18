@@ -1,6 +1,7 @@
 package com.skilldistillery.fuel4less.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -120,6 +121,23 @@ public class GasStation {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+	
+	public void addUser(User user) {
+		if (users == null) {
+			users = new ArrayList<>();
+		}
+		if (! users.contains(user)) {
+			users.add(user);
+			user.addFavoriteGasStation(this);
+		}
+	}
+	
+	public void removeUser(User user) {
+		if (users != null && users.contains(user)) {
+			users.remove(user);
+			user.removeFavoriteGasStation(this);
+		}
 	}
 
 	public List<Tag> getTags() {

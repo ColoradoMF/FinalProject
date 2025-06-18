@@ -18,5 +18,9 @@ public interface UserService {
 
 	User findById(int userId);
 	
+	void addFavoriteGasStation(String username, int gasStationId);
+	
+	void removeFavoriteGasStation(String username, int gasStationId);
+	
 
 }
