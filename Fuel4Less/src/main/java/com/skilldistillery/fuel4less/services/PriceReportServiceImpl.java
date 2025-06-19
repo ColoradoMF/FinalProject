@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.fuel4less.entities.GasStation;
 import com.skilldistillery.fuel4less.entities.PriceReport;
 import com.skilldistillery.fuel4less.entities.User;
+import com.skilldistillery.fuel4less.repositories.GasStationRepository;
 import com.skilldistillery.fuel4less.repositories.PriceReportRepository;
 import com.skilldistillery.fuel4less.repositories.UserRepository;
 
@@ -18,6 +20,9 @@ public class PriceReportServiceImpl implements PriceReportService {
 	
 	@Autowired
 	UserRepository userRepo;
+	
+	@Autowired
+	private GasStationRepository gasStationRepo;
 
 	@Override
 	public PriceReport findById(int id) {
@@ -30,10 +35,12 @@ public class PriceReportServiceImpl implements PriceReportService {
 	}
 
 	@Override
-	public PriceReport createPriceReport(PriceReport newPriceReport, String userName) {
+	public PriceReport createPriceReport(int gasStationId, PriceReport newPriceReport, String userName) {
 		User user = userRepo.findByUsername(userName);
-		if(user != null) {
+		GasStation gasStation = gasStationRepo.findById(gasStationId).orElse(null);
+		if(user != null && gasStation != null) {
 			newPriceReport.setUser(user);
+			newPriceReport.setGasStation(gasStation);
 			return priceReportRepo.saveAndFlush(newPriceReport);			
 		}
 		return null;

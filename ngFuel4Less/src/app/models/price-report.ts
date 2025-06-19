@@ -10,7 +10,7 @@ export class PriceReport {
   lastUpdate: string | null | undefined;
   remarks: String;
   fuelType: Fueltype;
-  gasStation: GasStation;
+  gasStation: GasStation | null | undefined;
   user: User;
   reportVotes: any;
 

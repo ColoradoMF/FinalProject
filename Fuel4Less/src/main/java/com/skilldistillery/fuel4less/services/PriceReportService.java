@@ -8,7 +8,7 @@ public interface PriceReportService {
 	
 	PriceReport findById(int id);
 	List<PriceReport> findAll();
-	PriceReport createPriceReport(PriceReport newPriceReport, String userName);
+	PriceReport createPriceReport(int gasStationId, PriceReport newPriceReport, String userName);
 	PriceReport updatePriceReport(int priceReportId, PriceReport updatePriceReport);
 	boolean deletePriceReportById(int priceReportId);
 	List<PriceReport> getMostRecent(int gasStationId);

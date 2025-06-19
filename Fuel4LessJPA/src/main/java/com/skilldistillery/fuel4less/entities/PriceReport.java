@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -47,6 +48,7 @@ public class PriceReport {
 	@JoinColumn(name="user_id")
 	private User user;
 	
+	@JsonIgnoreProperties({"priceReports"})
 	@ManyToOne
 	@JoinColumn(name="gas_station_id")
 	private GasStation gasStation;

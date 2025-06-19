@@ -39,12 +39,14 @@ export class PriceReportService {
     );
   }
 
-  createPriceReport(priceReport: PriceReport): Observable<PriceReport>{
+  createPriceReport(gasStationId: number, priceReport: PriceReport): Observable<PriceReport>{
     delete priceReport.createDate;
     delete priceReport.lastUpdate;
     delete priceReport.reportVotes;
+    delete priceReport.gasStation;
     console.log(priceReport);
-    return this.http.post<PriceReport>(this.url2 + "/" + priceReport.gasStation.id + "/priceReports", priceReport, this.getHttpOptions()).pipe(
+    // return this.http.post<PriceReport>(this.url2 + "/" + priceReport.gasStation.id + "/priceReports", priceReport, this.getHttpOptions()).pipe(
+    return this.http.post<PriceReport>(this.url2 + "/" + gasStationId + "/priceReports", priceReport, this.getHttpOptions()).pipe(
       catchError((nobueno: any) => {
         console.error(nobueno);
         return throwError(

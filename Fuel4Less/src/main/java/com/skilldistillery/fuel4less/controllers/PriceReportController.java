@@ -58,7 +58,7 @@ public class PriceReportController {
 			@RequestBody PriceReport priceReport) {
 		PriceReport createdReport = null;
 		try {
-			createdReport = priceReportService.createPriceReport(priceReport, principal.getName());
+			createdReport = priceReportService.createPriceReport(gasStationId, priceReport, principal.getName());
 				if(createdReport != null) {
 					res.setHeader("location", req.getRequestURL().toString());
 					res.setStatus(HttpServletResponse.SC_CREATED);
@@ -67,6 +67,7 @@ public class PriceReportController {
 				}
 		} catch (Exception e) {
 			res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			createdReport = null;
 			e.printStackTrace();
 		}
 		return createdReport;

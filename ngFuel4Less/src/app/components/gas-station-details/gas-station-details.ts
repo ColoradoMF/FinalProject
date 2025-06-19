@@ -111,7 +111,7 @@ export class GasStationDetails implements OnInit{
   submitPriceReport(priceReport: PriceReport) {
       priceReport.gasStation = this.gasStation;
       // priceReport.pricePerGallon = parseFloat(this.newReportPricePerGallon);
-    this.priceReportService.createPriceReport(priceReport).subscribe({
+    this.priceReportService.createPriceReport(this.gasStation.id, priceReport).subscribe({
       next: (createdReport) => {
         console.log(createdReport);
         this.loadRecentPrices();

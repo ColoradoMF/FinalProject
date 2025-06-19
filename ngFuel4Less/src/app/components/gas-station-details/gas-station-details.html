@@ -97,7 +97,7 @@
               style="width: 100px;"
               />
               <input type="hidden" name="fuelTypeId" [ngModel]="priceReport.fuelType.id" />
-              <input type="hidden" name="gasStationId" [ngModel]="priceReport.gasStation.id" />
+              <input type="hidden" name="gasStationId" [ngModel]="priceReport.gasStation?.id" />
               <button type="submit" class="btn btn-sm btn-warning">Update</button>
             </form>
           </td>
