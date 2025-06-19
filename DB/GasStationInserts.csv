@@ -1,4 +1,26 @@
 id,name,address_id,image_url,create_date,update_date,remarks
-1,Stinker,1,https://a.mktgcdn.com/p/MOQBu9QL_-Z0jxH_p_eNZQrKkqVxrxFtMfg6sPjW-IE/1809x1809.png,2025:06:12,2025:06:12,"Some remarks"
-2,"Murphy USA",2,https://www.scrapehero.com/store/wp-content/uploads/2020/11/Murphy_USA_USA.png,2025:06:12,2025:06:12,"Other remarks"
-3,Shell,5,https://northwoodsinnpickerel.com/wp-content/uploads/2016/03/Shell-gas-station-logo-trans.png,2025:06:12,2025:06:12,"Even more remarks"
+1,Stinker,1,https://a.mktgcdn.com/p/MOQBu9QL_-Z0jxH_p_eNZQrKkqVxrxFtMfg6sPjW-IE/1809x1809.png,2025-06-12 00:00:00,2025-06-12 00:00:00,Some remarks
+2,Murphy USA,2,https://www.scrapehero.com/store/wp-content/uploads/2020/11/Murphy_USA_USA.png,2025-06-14 00:00:00,2025-06-14 00:00:00,Other remarks
+3,Shell,3,https://northwoodsinnpickerel.com/wp-content/uploads/2016/03/Shell-gas-station-logo-trans.png,2025-06-12 00:00:00,2025-06-12 00:00:00,Even more remarks
+4,Safeway Fuel Federal Blvd,4,https://play-lh.googleusercontent.com/kHP7uqO73fW3L2jBTNxGR-Tg4JYLpPiFW9i8eO6nX6S2Ugy6cKTn05-_GgAu2O9EvcU,2025-06-14 00:00:00,2025-06-14 00:00:00,NULL
+5,Safeway Fuel E Evans,5,https://play-lh.googleusercontent.com/kHP7uqO73fW3L2jBTNxGR-Tg4JYLpPiFW9i8eO6nX6S2Ugy6cKTn05-_GgAu2O9EvcU,2025-06-14 00:00:00,2025-06-14 00:00:00,NULL
+6,Safeway Fuel S Monaco,6,https://play-lh.googleusercontent.com/kHP7uqO73fW3L2jBTNxGR-Tg4JYLpPiFW9i8eO6nX6S2Ugy6cKTn05-_GgAu2O9EvcU,2025-06-15 00:00:00,2025-06-15 00:00:00,NULL
+7,Safeway Fuel W 26th,7,https://play-lh.googleusercontent.com/kHP7uqO73fW3L2jBTNxGR-Tg4JYLpPiFW9i8eO6nX6S2Ugy6cKTn05-_GgAu2O9EvcU,2025-06-15 00:00:00,2025-06-15 00:00:00,NULL
+8,Safeway Fuel W 44th,8,https://play-lh.googleusercontent.com/kHP7uqO73fW3L2jBTNxGR-Tg4JYLpPiFW9i8eO6nX6S2Ugy6cKTn05-_GgAu2O9EvcU,2025-06-15 00:00:00,2025-06-15 00:00:00,NULL
+9,Safeway Fuel E 14th,9,https://play-lh.googleusercontent.com/kHP7uqO73fW3L2jBTNxGR-Tg4JYLpPiFW9i8eO6nX6S2Ugy6cKTn05-_GgAu2O9EvcU,2025-06-16 00:00:00,2025-06-16 00:00:00,NULL
+10,Safeway Fuel W Colfax,10,https://play-lh.googleusercontent.com/kHP7uqO73fW3L2jBTNxGR-Tg4JYLpPiFW9i8eO6nX6S2Ugy6cKTn05-_GgAu2O9EvcU,2025-06-16 00:00:00,2025-06-16 00:00:00,NULL
+11,Safeway Fuel Washington St,11,https://play-lh.googleusercontent.com/kHP7uqO73fW3L2jBTNxGR-Tg4JYLpPiFW9i8eO6nX6S2Ugy6cKTn05-_GgAu2O9EvcU,2025-06-16 00:00:00,2025-06-16 00:00:00,
+12,King Soopers Bear Valley,12,https://denver.cbslocal.com/wp-content/uploads/sites/15909806/2019/12/GAS-STATION-MIX-UP-PKG_frame_871.jpg,2025-06-16 00:00:00,2025-06-16 00:00:00,Some remarks
+13,King Soopers Central Park,13,https://denver.cbslocal.com/wp-content/uploads/sites/15909806/2019/12/GAS-STATION-MIX-UP-PKG_frame_871.jpg,2025-06-12 00:00:00,2025-06-12 00:00:00,Other remarks
+14,King Soopers Green Valley Ranch,14,https://denver.cbslocal.com/wp-content/uploads/sites/15909806/2019/12/GAS-STATION-MIX-UP-PKG_frame_871.jpg,2025-06-14 00:00:00,2025-06-14 00:00:00,Even more remarks
+15,King Soopers Quebec St,15,https://denver.cbslocal.com/wp-content/uploads/sites/15909806/2019/12/GAS-STATION-MIX-UP-PKG_frame_871.jpg,2025-06-12 00:00:00,2025-06-12 00:00:00,NULL
+16,King Soopers Southmoor,16,https://denver.cbslocal.com/wp-content/uploads/sites/15909806/2019/12/GAS-STATION-MIX-UP-PKG_frame_871.jpg,2025-06-14 00:00:00,2025-06-14 00:00:00,NULL
+17,King Soopers W Evans,17,https://denver.cbslocal.com/wp-content/uploads/sites/15909806/2019/12/GAS-STATION-MIX-UP-PKG_frame_871.jpg,2025-06-14 00:00:00,2025-06-14 00:00:00,NULL
+18,King Soopers W Florida,18,https://denver.cbslocal.com/wp-content/uploads/sites/15909806/2019/12/GAS-STATION-MIX-UP-PKG_frame_871.jpg,2025-06-15 00:00:00,2025-06-15 00:00:00,NULL
+19,Sinclair Colfax,19,https://a.mktgcdn.com/p/Tx91OM14rsV4DOtNbg0W2avNGOsRndvHPAPoGdt_jUQ/659x507.png,2025-06-15 00:00:00,2025-06-15 00:00:00,NULL
+20,Shell Federal & Alameda,20,https://www.siliconvalley.com/wp-content/uploads/2024/05/OCR-L-SFORZA-ANAHEIM-0802-JG-06.jpg?fit=620%2C9999px&ssl=1,2025-06-15 00:00:00,2025-06-15 00:00:00,NULL
+21,7-Eleven Sunnyside,21,https://d3ghupt9z9s6o0.cloudfront.net/app/uploads/2020/06/13094932/7-eleven-digital.jpg,2025-06-16 00:00:00,2025-06-16 00:00:00,NULL
+22,Murphy Express Briarwood,22,https://s3-media0.fl.yelpcdn.com/bphoto/q9YnWed56tiO6gYwacYcww/348s.jpg,2025-06-16 00:00:00,2025-06-16 00:00:00,NULL
+23,Pilot Flying J,23,https://dynl.mktgcdn.com/p/qwiEMNbkkep8VGIrcKuS0a-uRDKYLxwpBEAp0WFuiro/1440x446.jpg,2025-06-16 00:00:00,2025-06-16 00:00:00,NULL
+23,,,,2025-06-16 00:00:00,2025-06-16 00:00:00,NULL
+24,,,,2025-06-12 00:00:00,2025-06-12 00:00:00,NULL

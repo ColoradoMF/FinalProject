@@ -23,10 +23,10 @@
           }
         </select>
         <input
-        type="text"
+        type="number" step="0.01"
         name="pricePerGallon"
         placeholder="$ -.--"
-        [(ngModel)]="newReportPricePerGallon"
+        [(ngModel)]="newPriceReport.pricePerGallon"
         class="form-control form-control-sm"
         style="width: 100px;"
         required
@@ -88,7 +88,8 @@
               class="d-flex flex-column flex-md-row align-items-center gap-2"
               >
               <input
-              type="text"
+              type="number"
+              step=".01"
               name="pricePerGallon"
               placeholder="$ -.--"
               [ngModel]="priceReport.pricePerGallon"

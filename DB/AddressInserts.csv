@@ -1,6 +1,24 @@
 id,street,street2,city,state,zip_code
-1,"800 W Hampden Ave",NULL,Englewood,CO,80110
-2,"181 West Littleton Blvd",NULL,Littleton,CO,80121
-3,"10185 Park Meadows Dr",NULL,"Lone Tree",CO,80124
-4,"900 Englewood Parkway",NULL,Englewood,CO,80100
-5,"6200 S Santa Fe Dr.",NULL,Littleton,CO,80120
+1,800 W Hampden Ave,NULL,Englewood,CO,80110
+2,181 West Littleton Blvd,NULL,Littleton,CO,80121
+3,6200 S Santa Fe Dr.,NULL,Littleton,CO,80120
+4,10200 Federal Blvd,NULL,Denver,CO,80260
+5,1280 E Evans Ave,NULL,Denver,CO,80210
+6,2797 S Monaco Pkwy,NULL,Denver,CO,80222
+7,2995 W 26th Ave,NULL,Denver,CO,80211
+8,3600 W 44th Ave,NULL,Denver,CO,80211
+9,6130 E 14th Ave,NULL,Denver,CO,80220
+10,9180 W Colfax Ave,NULL,Denver,CO,80215
+11,9640 Washington St,NULL,Denver,CO,80229
+12,3100 S Sheridan Blvd,NULL,Denver,CO,80227
+13,2984 N Havana St.,NULL,Denver,CO,80238
+14,18605 Green Valley Ranch Blvd,NULL,Denver,CO,80249
+15,2810 Quebec St,NULL,Denver,CO,80207
+16,6470 E Hampden Ave,NULL,Denver,CO,80222
+17,2727 W Evans Ave,NULL,Denver,CO,80219
+18,5125 W Florida Ave,NULL,Denver,CO,80219
+19,6390 E Colfax Ave,NULL,Denver,CO,80220
+20,6504 E Alameda Ave,NULL,Denver,CO,80224
+21,1301 W 38th Ave,NULL,Denver,CO,80211
+22,11005 E Briarwood Ave,NULL,Denver,CO,80220
+23,Denver I-70 Pilot Stop,NULL,Denver,CO,80239
